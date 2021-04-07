@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class DataContext
+    public class DataContext
     {
         public Dictionary<int, IProduct> Products = new Dictionary<int, IProduct>();
         public List<Buyer> Buyers = new List<Buyer>();

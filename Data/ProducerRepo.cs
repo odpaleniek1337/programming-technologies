@@ -11,10 +11,10 @@ namespace Data
         static Dictionary<int, Producer> producers = new Dictionary<int, Producer>();
         public void Upsert(Producer P)
         {
-            if (producers.ContainsKey(P.Id))
-                producers[P.Id] = P;
+            if (producers.ContainsKey(P.ID))
+                producers[P.ID] = P;
             else
-                producers.Add(P.Id, P);
+                producers.Add(P.ID, P);
         }
         public Producer Get(int ID)
         {

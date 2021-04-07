@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class OrderStatus
+    public class OrderStatus
     {
         public OrderStatus(string Name, DateTime CreatedAt)
         {
