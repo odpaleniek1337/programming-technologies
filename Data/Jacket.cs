@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class User
+    class Jacket : Product
     {
     }
 }
