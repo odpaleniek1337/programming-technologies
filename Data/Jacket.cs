@@ -8,8 +8,18 @@ namespace Data
 {
     class Jacket : IProduct
     {
-        private int season_id;
-        public int Id { get; set; }
+        public Jacket(int ID, string Name, string Model, float Price, string Size, int Quantity, int ProducerId, int SeasonId)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.Model = Model;
+            this.Price = Price;
+            this.Size = Size;
+            this.Quantity = Quantity;
+            this.ProducerId = ProducerId;
+            this.SeasonId = SeasonId;
+        }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public float Price { get; set; }

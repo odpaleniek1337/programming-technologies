@@ -8,7 +8,7 @@ namespace Data
 {
     public interface IProduct
     {
-        int Id { get; set; }
+        int ID { get; set; }
         string Name { get; set; }
         string Model { get; set; }
         float Price { get; set; }
