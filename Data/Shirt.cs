@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class Shirt : IProduct
+    public class Shirt : IProduct
     {
         public Shirt(int ID, string Name, string Model, float Price, string Size, int Quantity, int ProducerId, string CollarType)
         {

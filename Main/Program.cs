@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Main
 {
-    public class Shop
+    class Program
     {
+        static void Main(string[] args)
+        {
+            
+        }
     }
 }

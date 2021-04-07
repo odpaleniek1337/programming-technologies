@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{4CF86600-88E0-41D9-9357-A27256A3517E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{C639FECC-26C4-443A-B3C4-0601F450A8B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CF86600-88E0-41D9-9357-A27256A3517E} = {4CF86600-88E0-41D9-9357-A27256A3517E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8C1F5E02-8C0F-41F9-A082-BD17469C2F75}"
 EndProject

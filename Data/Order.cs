@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class Order
+    public class Order
     {
         static List<OrderStatus> order_statuses = new List<OrderStatus>();
         public Order(int ID, Buyer Buyer)
