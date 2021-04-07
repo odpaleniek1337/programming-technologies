@@ -7,21 +7,19 @@ using System.Threading.Tasks;
 namespace Data
 {
     public class Buyer
-
     {
-        public Buyer(string Name, string Surname, int ID, int PhoneNumber, int ItemCount)
+        public Buyer(string Name, string Surname, int ID, int PhoneNumber)
         {
             this.Name = Name;
             this.Surname = Surname;
             this.ID = ID;
-            Phone = PhoneNumber;
-            BoughtItems = ItemCount;
+            this.Phone = PhoneNumber;
+            this.BoughtItems = 0;
         }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int ID { get; set; }
         public int Phone { get; set; }
-
         public int BoughtItems { get; set; }
 
     }
