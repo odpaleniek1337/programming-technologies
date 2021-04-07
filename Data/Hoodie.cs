@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class Shirt : IProduct
+    class Hoodie : IProduct
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,6 +15,5 @@ namespace Data
         public string Size { get; set; }
         public int Quantity { get; set; }
         public int ProducerId { get; set; }
-        public string CollarType { get; set; }
     }
 }

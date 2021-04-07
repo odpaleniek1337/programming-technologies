@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class Hood : Product
+    public enum Seasons
     {
+        Summer = 0,
+        Autumn = 1,
+        Winter = 2,
+        Spring = 3
     }
 }

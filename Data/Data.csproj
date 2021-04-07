@@ -41,14 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Seasons.cs" />
+    <Compile Include="ProducerRepo.cs" />
+    <Compile Include="Storage.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Payment.cs" />
-    <Compile Include="Size.cs" />
-    <Compile Include="Hood.cs" />
+    <Compile Include="Producer.cs" />
+    <Compile Include="Hoodie.cs" />
     <Compile Include="Jacket.cs" />
     <Compile Include="Shirt.cs" />
     <Compile Include="Shoes.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="IProduct.cs" />
     <Compile Include="Buyer.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
