@@ -9,7 +9,13 @@ namespace Data
     interface IRepository
     {
         Dictionary<int, IProduct> GetProducts();
-        List<Buyer> GetBuyers();
-        List<Order> GetOrders();
+        void AddProduct(IProduct Product);
+        void RemoveProduct(int ID);
+        Dictionary<int, Buyer> GetBuyers();
+        void AddBuyer(Buyer Buyer);
+        void RemoveBuyer(int ID);
+        Dictionary<int, Order> GetOrders();
+        void AddOrder(Order Order);
+        void RemoveOrder(int ID);
     }
 }

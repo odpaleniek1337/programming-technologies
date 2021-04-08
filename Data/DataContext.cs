@@ -9,7 +9,7 @@ namespace Data
     public class DataContext
     {
         public Dictionary<int, IProduct> Products = new Dictionary<int, IProduct>();
-        public List<Buyer> Buyers = new List<Buyer>();
-        public List<Order> Orders = new List<Order>();
+        public Dictionary<int, Buyer> Buyers = new Dictionary<int, Buyer>();
+        public Dictionary<int, Order> Orders = new Dictionary<int, Order>();
     }
 }
