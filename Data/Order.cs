@@ -9,13 +9,13 @@ namespace Data
     public class Order
     {
         static List<OrderStatus> order_statuses = new List<OrderStatus>();
-        public Order(int ID, Buyer Buyer, IProduct Product)
+        public Order(int ID, Buyer Buyer, IProduct Product, int PaymentMethod)
         {
             this.ID = ID;
             this.Buyer = Buyer;
             this.CreatedAt = DateTime.Now;
             order_statuses.Add(new OrderStatus("Created", DateTime.Now));
-            this.Payment = new Payment();
+            this.Payment = new Payment(PaymentMethod, Product.Price);
             this.Product = Product;
         }
         public IProduct Product { get; set; }
