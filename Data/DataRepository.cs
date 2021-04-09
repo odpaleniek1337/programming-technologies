@@ -74,7 +74,7 @@ namespace Data
             return context.Orders;
         }
 
-        public void addOrder(Order Order)
+        public void AddOrder(Order Order)
         {
             if (!context.Orders.ContainsKey(Order.ID))
             {
