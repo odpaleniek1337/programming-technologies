@@ -13,7 +13,6 @@ namespace Data
         string Model { get; set; }
         float Price { get; set; }
         string Size { get; set; }
-        int Quantity { get; set; }
         Producer Producer { get; set; }
     }
 }

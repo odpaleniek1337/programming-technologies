@@ -8,14 +8,13 @@ namespace Data
 {
     public class Shirt : IProduct
     {
-        public Shirt(int ID, string Name, string Model, float Price, string Size, int Quantity, Producer Producer, string CollarType)
+        public Shirt(int ID, string Name, string Model, float Price, string Size, Producer Producer, string CollarType)
         {
             this.ID = ID;
             this.Name = Name;
             this.Model = Model;
             this.Price = Price;
             this.Size = Size;
-            this.Quantity = Quantity;
             this.Producer = Producer;
             this.CollarType = CollarType;
         }
@@ -24,7 +23,6 @@ namespace Data
         public string Model { get; set; }
         public float Price { get; set; }
         public string Size { get; set; }
-        public int Quantity { get; set; }
         public Producer Producer { get; set; }
         public string CollarType { get; set; }
     }
