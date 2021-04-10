@@ -30,6 +30,28 @@ namespace Data
                 throw new Exception("There is already a Product created with that ID");
             }
         }
+        IProduct IRepository.GetProduct(int ID)
+        {
+            if (context.Products.ContainsKey(ID))
+            {
+                return context.Products[ID];
+            }
+            else
+            {
+                throw new Exception("There is no Product with that ID!");
+            }
+        }
+        public void UpdateProduct(int ID, IProduct Product)
+        {
+            if (context.Products.ContainsKey(ID))
+            {
+                context.Products[ID] = Product;
+            }
+            else
+            {
+                throw new Exception("There is no Product with that ID!");
+            }
+        }
         public void RemoveProduct(int ID)
         {
             if (context.Products.ContainsKey(ID))
@@ -41,7 +63,6 @@ namespace Data
                 throw new Exception("There is no Product with that ID!");
             }
         }
-
         public Dictionary<int,Buyer> GetBuyers()
         {
             return context.Buyers;
@@ -55,6 +76,28 @@ namespace Data
             else
             {
                 throw new Exception("There is already a Buyer created with that ID");
+            }
+        }
+        Buyer IRepository.GetBuyer(int ID)
+        {
+            if (context.Buyers.ContainsKey(ID))
+            {
+                return context.Buyers[ID];
+            }
+            else
+            {
+                throw new Exception("There is no Buyer with that ID");
+            }
+        }
+        public void UpdateBuyer(int ID, Buyer Buyer)
+        {
+            if (context.Buyers.ContainsKey(ID))
+            {
+                context.Buyers[ID] = Buyer;
+            }
+            else
+            {
+                throw new Exception("There is no Buyer with that ID!");
             }
         }
         public void RemoveBuyer(int ID)
@@ -85,6 +128,28 @@ namespace Data
                 throw new Exception("There is already an Order created with that ID");
             }
         }
+        Order IRepository.GetOrder(int ID)
+        {
+            if (context.Orders.ContainsKey(ID))
+            {
+                return context.Orders[ID];
+            }
+            else
+            {
+                throw new Exception("There is no Order with that ID");
+            }
+        }
+        public void UpdateOrder(int ID, Order Order)
+        {
+            if (context.Orders.ContainsKey(ID))
+            {
+                context.Orders[ID] = Order;
+            }
+            else
+            {
+                throw new Exception("There is no Order with that ID!");
+            }
+        }
         public void RemoveOrder(int ID)
         {
             if (context.Orders.ContainsKey(ID))
@@ -113,6 +178,28 @@ namespace Data
                 throw new Exception("There is already an Producer created with that ID");
             }
         }
+        Producer IRepository.GetProducer(int ID)
+        {
+            if (context.Producers.ContainsKey(ID))
+            {
+                return context.Producers[ID];
+            }
+            else
+            {
+                throw new Exception("There is no Producer with that ID");
+            }
+        }
+        public void UpdateProducer(int ID, Producer Producer)
+        {
+            if (context.Producers.ContainsKey(ID))
+            {
+                context.Producers[ID] = Producer;
+            }
+            else
+            {
+                throw new Exception("There is no Producer with that ID!");
+            }
+        }
         public void RemoveProducer(int ID)
         {
             if (context.Producers.ContainsKey(ID))
@@ -137,7 +224,18 @@ namespace Data
             }
             else
             {
-                throw new Exception("There is already an Producer created with that ID");
+                throw new Exception("There is already an Event created with that ID");
+            }
+        }
+        Event IRepository.GetEvent(int ID)
+        {
+            if (context.Events.ContainsKey(ID))
+            {
+                return context.Events[ID];
+            }
+            else
+            {
+                throw new Exception("There is no Event with that ID");
             }
         }
         public void RemoveEvent(int ID)
@@ -148,7 +246,7 @@ namespace Data
             }
             else
             {
-                throw new Exception("There is no Producer with that ID");
+                throw new Exception("There is no Event with that ID");
             }
         }
         public Dictionary<int, State> GetStates()
