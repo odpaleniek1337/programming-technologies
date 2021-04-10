@@ -88,10 +88,6 @@ namespace Logic
         {
             repository.RemoveProduct(ID, Product);
         }
-        public void UpdateEvent(int ID, Event Event)
-        {
-            repository.UpdateEvent(ID, Event);
-        }
         public void UpdateOrder(int ID, Order Order)
         {
             repository.UpdateOrder(ID, Order);
