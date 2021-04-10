@@ -32,5 +32,9 @@ namespace Data
         void AddEvent(Event Event);
         Event GetEvent(int ID);
         void RemoveEvent(int ID);
+        Dictionary<int, State> GetStates();
+        void AddState(IProduct Product, int Quantity);
+        void UpdateState(IProduct Product, int NewQuantity);
+        void RemoveState(IProduct Product);
     }
 }

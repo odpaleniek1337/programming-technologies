@@ -116,7 +116,6 @@ namespace Data
         {
             return context.Orders;
         }
-
         public void AddOrder(Order Order)
         {
             if (!context.Orders.ContainsKey(Order.ID))
@@ -166,7 +165,6 @@ namespace Data
         {
             return context.Producers;
         }
-
         public void AddProducer(Producer Producer)
         {
             if (!context.Orders.ContainsKey(Producer.ID))
@@ -211,11 +209,11 @@ namespace Data
                 throw new Exception("There is no Producer with that ID");
             }
         }
+
         public Dictionary<int, Event> GetEvents()
         {
             return context.Events;
         }
-
         public void AddEvent(Event Event)
         {
             if (!context.Events.ContainsKey(Event.ID))
@@ -249,27 +247,42 @@ namespace Data
                 throw new Exception("There is no Event with that ID");
             }
         }
+
         public Dictionary<int, State> GetStates()
         {
             return context.States;
         }
-
-        public void AddState(State State, IProduct Product)
+        public void AddState(IProduct Product, int Quantity)
         {
             if (!context.States.ContainsKey(Product.ID))
             {
-                context.States.Add(Product.ID , State);
+                State State = new State();
+                State.Quantity = Quantity;
+                context.States.Add(Product.ID, State);
             }
             else
             {
                 throw new Exception("There is already an State for this Product created with that ID");
             }
         }
-        public void RemoveState(int ID)
+        public void UpdateState(IProduct Product, int NewQuantity)
         {
-            if (context.States.ContainsKey(ID))
+            if (context.States.ContainsKey(Product.ID))
             {
-                context.States.Remove(ID);
+                State State = new State();
+                State.Quantity = NewQuantity;
+                context.States[Product.ID] = State;
+            }
+            else
+            {
+                throw new Exception("There is no State with that Product.ID");
+            }
+        }
+        public void RemoveState(IProduct Product)
+        {
+            if (context.States.ContainsKey(Product.ID))
+            {
+                context.States.Remove(Product.ID);
             }
             else
             {
