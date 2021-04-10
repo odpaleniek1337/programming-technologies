@@ -31,6 +31,7 @@ namespace Logic
         {
             return repository.GetOrders();
         }
+
         // GET SPECIFIC
         public IProduct GetProduct(int ID)
         {
@@ -50,7 +51,7 @@ namespace Logic
         }
 
         // POST
-        public void AddProduct(IProduct Product)
+        public void AddProduct(IProduct Product)    
         {
             repository.AddProduct(Product);
         }
@@ -66,6 +67,7 @@ namespace Logic
         {
             repository.AddProducer(Producer);
         }
+        
         // DELETE
         public void RemoveProduct(int ID)
         {
@@ -115,7 +117,7 @@ namespace Logic
         {
             return repository.GetEventsNumber();
         }
-
+        
         // GET STATE OF ORDER
         public Event GetLastState(Order Order)
         {
