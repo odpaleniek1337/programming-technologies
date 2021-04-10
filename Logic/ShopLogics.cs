@@ -9,7 +9,7 @@ namespace Logic
 {
     class ShopLogics
     {
-        // GET ALL 
+        // GET ALL
         public IRepository repository;
         public ShopLogics(IRepository repository)
         {
@@ -83,6 +83,7 @@ namespace Logic
         {
             repository.RemoveProducer(ID);
         }
+
         // UPDATE
         public void UpdateProduct(int ID, IProduct Product)
         {
@@ -95,6 +96,24 @@ namespace Logic
         public void UpdateProducer(int ID, Producer Producer)
         {
             repository.UpdateProducer(ID, Producer);
+        }
+
+        // GET COUNT
+        public int GetProductsNumber()
+        {
+            return repository.GetProductsNumber();
+        }
+        public int GetOrdersNumber()
+        {
+            return repository.GetOrdersNumber();
+        }
+        public int GetProducersNumber()
+        {
+            return repository.GetProducersNumber();
+        }
+        public int GetEventNumber()
+        {
+            return repository.GetEventsNumber();
         }
     }
 }

@@ -36,5 +36,9 @@ namespace Data
         void AddState(IProduct Product, int Quantity);
         void UpdateState(IProduct Product, int NewQuantity);
         void RemoveState(IProduct Product);
+        int GetProductsNumber();
+        int GetOrdersNumber();
+        int GetEventsNumber();
+        int GetProducersNumber();
     }
 }

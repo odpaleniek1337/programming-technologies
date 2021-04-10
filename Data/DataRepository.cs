@@ -289,5 +289,21 @@ namespace Data
                 throw new Exception("There is no State with that Product.ID");
             }
         }
+        public int GetProductsNumber()
+        {
+            return context.Products.Count;  
+        }
+        public int GetOrdersNumber()
+        {
+            return context.Orders.Count;
+        }
+        public int GetEventsNumber()
+        {
+            return context.Events.Count;
+        }
+        public int GetProducersNumber()
+        {
+            return context.Events.Count;
+        }
     }
 }
