@@ -115,5 +115,15 @@ namespace Logic
         {
             return repository.GetEventsNumber();
         }
+
+        // GET STATE OF ORDER
+        public Event GetLastState(Order Order)
+        {
+            return repository.GetLastState(Order);
+        }
+        public List<Event> GetStateHistory(Order Order)
+        {
+            return repository.GetStateHistory(Order);
+        }
     }
 }

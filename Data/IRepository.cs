@@ -40,5 +40,7 @@ namespace Data
         int GetOrdersNumber();
         int GetEventsNumber();
         int GetProducersNumber();
+        List<Event> GetStateHistory(Order Order);
+        Event GetLastState(Order Order);
     }
 }

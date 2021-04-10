@@ -305,5 +305,25 @@ namespace Data
         {
             return context.Events.Count;
         }
+        public List<Event> GetStateHistory(Order Order)
+        {
+            List<Event> events = new List<Event>();
+            Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
+            foreach (Event e in valueColl)
+            {
+                if (e.Order == Order) events.Add(e);
+            }
+            return events;
+        }
+        public Event GetLastState(Order Order)
+        {
+            Event LastEvent = null;
+            Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
+            foreach (Event e in valueColl)
+            {
+                if (e.Order == Order) LastEvent = e;
+            }
+            return LastEvent;
+        }
     }
 }
