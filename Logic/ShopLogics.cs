@@ -86,7 +86,7 @@ namespace Logic
         // UPDATE
         public void UpdateProduct(int ID, IProduct Product)
         {
-            repository.RemoveProduct(ID, Product);
+            repository.UpdateProduct(ID, Product);
         }
         public void UpdateOrder(int ID, Order Order)
         {
