@@ -14,6 +14,6 @@ namespace Data
         float Price { get; set; }
         string Size { get; set; }
         int Quantity { get; set; }
-        int ProducerId { get; set; }
+        Producer Producer { get; set; }
     }
 }

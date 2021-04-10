@@ -96,5 +96,60 @@ namespace Data
                 throw new Exception("There is no Order with that ID");
             }
         }
+
+        public Dictionary<int, Producer> GetProducers()
+        {
+            return context.Producers;
+        }
+
+        public void AddProducer(Producer Producer)
+        {
+            if (!context.Orders.ContainsKey(Producer.ID))
+            {
+                context.Producers.Add(Producer.ID, Producer);
+            }
+            else
+            {
+                throw new Exception("There is already an Producer created with that ID");
+            }
+        }
+        public void RemoveProducer(int ID)
+        {
+            if (context.Producers.ContainsKey(ID))
+            {
+                context.Producers.Remove(ID);
+            }
+            else
+            {
+                throw new Exception("There is no Producer with that ID");
+            }
+        }
+        public Dictionary<int, Event> GetEvents()
+        {
+            return context.Events;
+        }
+
+        public void AddEvent(Event Event)
+        {
+            if (!context.Events.ContainsKey(Event.ID))
+            {
+                context.Events.Add(Event.ID, Event);
+            }
+            else
+            {
+                throw new Exception("There is already an Producer created with that ID");
+            }
+        }
+        public void RemoveEvent(int ID)
+        {
+            if (context.Events.ContainsKey(ID))
+            {
+                context.Events.Remove(ID);
+            }
+            else
+            {
+                throw new Exception("There is no Producer with that ID");
+            }
+        }
     }
 }

@@ -9,6 +9,6 @@ namespace Logic
 {
     public class Main
     {
-       
+        
     }
 }

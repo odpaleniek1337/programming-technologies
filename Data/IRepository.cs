@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    interface IRepository
+    public interface IRepository
     {
         Dictionary<int, IProduct> GetProducts();
         void AddProduct(IProduct Product);
@@ -17,5 +17,11 @@ namespace Data
         Dictionary<int, Order> GetOrders();
         void AddOrder(Order Order);
         void RemoveOrder(int ID);
+        Dictionary<int, Producer> GetProducers();
+        void AddProducer(Producer Producer);
+        void RemoveProducer(int ID);
+        Dictionary<int, Event> GetEvents();
+        void AddEvent(Event Event);
+        void RemoveEvent(int ID);
     }
 }
