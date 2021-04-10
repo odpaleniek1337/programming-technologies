@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class Shop
+    public class State
     {
+        public int Quantity { get; set; }
     }
 }

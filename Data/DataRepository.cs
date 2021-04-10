@@ -151,5 +151,32 @@ namespace Data
                 throw new Exception("There is no Producer with that ID");
             }
         }
+        public Dictionary<int, State> GetStates()
+        {
+            return context.States;
+        }
+
+        public void AddState(State State, IProduct Product)
+        {
+            if (!context.States.ContainsKey(Product.ID))
+            {
+                context.States.Add(Product.ID , State);
+            }
+            else
+            {
+                throw new Exception("There is already an State for this Product created with that ID");
+            }
+        }
+        public void RemoveState(int ID)
+        {
+            if (context.States.ContainsKey(ID))
+            {
+                context.States.Remove(ID);
+            }
+            else
+            {
+                throw new Exception("There is no State with that Product.ID");
+            }
+        }
     }
 }

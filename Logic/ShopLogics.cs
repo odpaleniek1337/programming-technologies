@@ -96,6 +96,5 @@ namespace Logic
         {
             repository.UpdateProducer(ID, Producer);
         }
-        
     }
 }
