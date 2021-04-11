@@ -14,13 +14,11 @@ namespace Data
             this.Surname = Surname;
             this.ID = ID;
             this.Phone = PhoneNumber;
-            this.BoughtItems = 0;
         }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int ID { get; set; }
         public int Phone { get; set; }
-        public int BoughtItems { get; set; }
 
     }
 }

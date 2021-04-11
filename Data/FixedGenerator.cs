@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class FixedGenerator : IGenerator
+    public class FixedGenerator : IGenerator
     {
         public void Generate(DataContext Context)
         {//Generating Producers
@@ -47,7 +47,7 @@ namespace Data
             Buyer Buyer1 = new Buyer("Piotr", "Sienkiewicz", 0, 600600600);
             Buyer Buyer2 = new Buyer("Michal", "Grzyb", 1, 500900400);
             Buyer Buyer3 = new Buyer("Lukasz", "Szukasz", 2, 713713713);
-            Buyer Buyer4 = new Buyer("Walter", "Biały", 3, 350400500);
+            Buyer Buyer4 = new Buyer("Walter", "Bialy", 3, 350400500);
 
             Context.Buyers.Add(0, Buyer1);
             Context.Buyers.Add(1, Buyer2);
@@ -72,7 +72,7 @@ namespace Data
             Event Event3 = new OrderEvent(2, new DateTime(2021, 4, 11, 15, 2, 0), Order3, 0);
             Event Event4 = new OrderEvent(3, new DateTime(2021, 4, 11, 15, 3, 0), Order4, 10);
             Event Event5 = new ComplainEvent(4, new DateTime(2021, 4, 11, 15, 4, 0), Order3, "Bad");
-            Event Event6 = new ReturnEvent(4, new DateTime(2021, 4, 11, 15, 5, 0), Order1, "Wrong Size");
+            Event Event6 = new ReturnEvent(5, new DateTime(2021, 4, 11, 15, 5, 0), Order1, "Wrong Size");
 
             Context.Events.Add(0, Event1);
             Context.Events.Add(1, Event2);

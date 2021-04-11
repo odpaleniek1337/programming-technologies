@@ -17,7 +17,6 @@ namespace Data
             this.Product = Product;
         }
         public IProduct Product { get; set; }
-        public int Amount { get; set; }
         public int ID { get; set; }
         public Buyer Buyer { get; set; }
         public Payment Payment { get; set; }
