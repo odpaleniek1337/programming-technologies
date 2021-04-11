@@ -220,12 +220,22 @@ namespace Data
             {
                 if (Event.GetType() == typeof(OrderEvent))
                 {
-                    int productId = Event.Order.Product.ID;
-                    if (context.States[productId].Quantity == 0) throw new Exception("Not enought products");
-                    else
+                    Order order = Event.Order;
+                    Event LastEvent = null;
+                    Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
+                    foreach (Event e in valueColl)
                     {
-                        context.States[productId].Quantity -= 1;
-                        context.Events.Add(Event.ID, Event);
+                        if (e.Order == order) LastEvent = e;
+                    }
+                    if (LastEvent == null)
+                    {
+                        int productId = Event.Order.Product.ID;
+                        if (context.States[productId].Quantity == 0) throw new Exception("Not enought products");
+                        else
+                        {
+                            context.States[productId].Quantity -= 1;
+                            context.Events.Add(Event.ID, Event);
+                        }
                     }
                 }
                 else if (Event.GetType() == typeof(ComplainEvent))
