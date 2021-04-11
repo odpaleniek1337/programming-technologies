@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class RandomGenerator
+    class RandomGenerator : IGenerator
     {
+        public void Generate(DataContext Context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

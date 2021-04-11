@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class FixedGenerator
+    class FixedGenerator : IGenerator
     {
         public void Generate(DataContext Context)
         {//Generating Producers
@@ -55,7 +55,31 @@ namespace Data
             Context.Buyers.Add(3, Buyer4);
 
             //Generating Orders
+
+            Order Order1 = new Order(0, Buyer1, Shoes1, 0);
+            Order Order2 = new Order(1, Buyer2, Jacket2, 1);
+            Order Order3 = new Order(2, Buyer3, Jacket1, 0);
+            Order Order4 = new Order(3, Buyer4, Hoodie2, 0);
+
+            Context.Orders.Add(0, Order1);
+            Context.Orders.Add(1, Order2);
+            Context.Orders.Add(2, Order3);
+            Context.Orders.Add(3, Order4);
             //Generating Events
+
+            Event Event1 = new OrderEvent(0, new DateTime(2021, 4, 11, 15, 0, 0), Order1, 2);
+            Event Event2 = new OrderEvent(1, new DateTime(2021, 4, 11, 15, 1, 0), Order2, 7);
+            Event Event3 = new OrderEvent(2, new DateTime(2021, 4, 11, 15, 2, 0), Order3, 0);
+            Event Event4 = new OrderEvent(3, new DateTime(2021, 4, 11, 15, 3, 0), Order4, 10);
+            Event Event5 = new ComplainEvent(4, new DateTime(2021, 4, 11, 15, 4, 0), Order3, "Bad");
+            Event Event6 = new ReturnEvent(4, new DateTime(2021, 4, 11, 15, 5, 0), Order1, "Wrong Size");
+
+            Context.Events.Add(0, Event1);
+            Context.Events.Add(1, Event2);
+            Context.Events.Add(2, Event3);
+            Context.Events.Add(3, Event4);
+            Context.Events.Add(4, Event5);
+            Context.Events.Add(5, Event6);
         }
     }
 }

@@ -1,16 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Data;
 
 namespace Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class TestGeneratedValues
     {
         [TestMethod]
         public void TestMethod1()
         {
-            
         }
     }
 }
