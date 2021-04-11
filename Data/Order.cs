@@ -12,7 +12,6 @@ namespace Data
         {
             this.ID = ID;
             this.Buyer = Buyer;
-            this.CreatedAt = DateTime.Now;
             this.Payment = new Payment(PaymentMethod, Product.Price);
             this.Product = Product;
         }
@@ -20,6 +19,5 @@ namespace Data
         public int ID { get; set; }
         public Buyer Buyer { get; set; }
         public Payment Payment { get; set; }
-        public DateTime CreatedAt { get; set; }
     }
 }

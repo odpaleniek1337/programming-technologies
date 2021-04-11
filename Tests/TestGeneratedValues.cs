@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Data;
+using System;
 
 namespace Tests
 {
@@ -53,7 +54,6 @@ namespace Tests
         [TestMethod]
         public void TestProductFields()
         {
-            Producer TestedProducer = new Producer("Reserved", 6, 2010);
             Assert.AreEqual(Repository.GetProduct(2).Name, "Fregaty Dwie");
             Assert.AreEqual(Repository.GetProduct(2).ID, 2);
             Assert.AreEqual(Repository.GetProduct(2).Model, "Blue");
@@ -64,6 +64,26 @@ namespace Tests
             Assert.AreEqual(Repository.GetProduct(2).Producer.YearOfCreation, 2010);
         }
 
-        //Add Random Event Test
+        [TestMethod]
+        public void TestEventFields()
+        {
+
+            Assert.AreEqual(Repository.GetEvent(2).ID, 2);
+            Assert.AreEqual(Repository.GetEvent(2).Date, new DateTime(2021, 4, 11, 15, 2, 0));
+            Assert.AreEqual(Repository.GetEvent(2).Order.ID, 2);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Payment.Method, 0);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Buyer.ID, 2);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Buyer.Name, "Lukasz");
+            Assert.AreEqual(Repository.GetEvent(2).Order.Buyer.Surname, "Szukasz");
+            Assert.AreEqual(Repository.GetEvent(2).Order.Buyer.Phone, 713713713);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.ID, 1);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Name, "Happy");
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Model, "Cyan");
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Price, 125.11f);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Size, "XL");
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.ID, 7);
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.Name, "North Face");
+            Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.YearOfCreation, 1980);
+        }
     }
 }
