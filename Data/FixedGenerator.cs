@@ -23,15 +23,15 @@ namespace Data
             Context.Producers.Add(5, Producer5);
 
             //Generating Products
-            Hoodie Hoodie1 = new Hoodie(0, "Sunny Longsleeve", "Black", 72.05f, "M", Producer4);
-            Hoodie Hoodie2 = new Hoodie(6, "Fast Zip", "Rainbow", 56.22f, "L", Producer3);
-            Jacket Jacket1 = new Jacket(1, "Happy", "Cyan", 125.11f, "XL", Producer5, 3);
-            Jacket Jacket2 = new Jacket(7, "Sad", "Magenta", 183.12f, "L", Producer4, 0);
-            Shirt Shirt1 = new Shirt(8, "Boi", "White", 13.22f, "XS", Producer3, "Classic");
-            Shirt Shirt2 = new Shirt(2, "Fregaty Dwie", "Blue", 22.22f, "M", Producer4, "Sailor");
-            Shoes Shoes1 = new Shoes(3, "Comfy Ones", "Red", 13.37f, "38", Producer1, true);
-            Shoes Shoes2 = new Shoes(4, "Uncomfy Ones", "White", 21.15f, "43", Producer2, false);
-            Shoes Shoes3 = new Shoes(5, "Maklowicz", "Pink", 99.99f, "42", Producer1, true);
+            Hoodie Hoodie1 = new Hoodie(0, "Sunny Longsleeve", "Black", 72.05f, "M", Producer4, 1);
+            Hoodie Hoodie2 = new Hoodie(6, "Fast Zip", "Rainbow", 56.22f, "L", Producer3, 3);
+            Jacket Jacket1 = new Jacket(1, "Happy", "Cyan", 125.11f, "XL", Producer5, 2);
+            Jacket Jacket2 = new Jacket(7, "Sad", "Magenta", 183.12f, "L", Producer4, 1);
+            Shirt Shirt1 = new Shirt(8, "Boi", "White", 13.22f, "XS", Producer3, 0);
+            Shirt Shirt2 = new Shirt(2, "Fregaty Dwie", "Blue", 22.22f, "M", Producer4, 0);
+            Shoes Shoes1 = new Shoes(3, "Comfy Ones", "Red", 13.37f, "38", Producer1, 0);
+            Shoes Shoes2 = new Shoes(4, "Uncomfy Ones", "White", 21.15f, "43", Producer2, 2);
+            Shoes Shoes3 = new Shoes(5, "Maklowicz", "Pink", 99.99f, "42", Producer1, 1);
 
             Context.Products.Add(0, Hoodie1);
             Context.Products.Add(6, Hoodie2);
