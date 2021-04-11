@@ -260,6 +260,21 @@ namespace Tests
             Shop.AddEvent(new OrderEvent(10, new DateTime(2021, 4, 11, 17, 1, 0), Order5, 1));
             Assert.AreEqual(Shop.GetEventsHistory(Order5)[0], Shop.GetEvent(10));
         }
+        [TestMethod]
+        public void TestRemovingEvent()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Shop.RemoveEvent(4);
+            Assert.AreEqual(Shop.GetEventNumber(), 5);
+        }
+        [TestMethod]
+        public void TestRemovingWrongEvent()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Assert.ThrowsException<Exception>(() => Shop.RemoveEvent(11));
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+        }
     }
 }
+
 
