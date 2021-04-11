@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class RandomGenerator : IGenerator
+    public class RandomGenerator : IGenerator
     {
         public void Generate(DataContext Context)
         {
