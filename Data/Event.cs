@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public abstract class Event
+    public class Event
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }
         public Order Order { get; set; }
-
+        public virtual string Reason { get { return null; } set { } }
+        public virtual string Complain { get { return null; } set { } }
+        public virtual int ClientRating { get { return -1; } set { } }
         protected Event(int ID, DateTime date, Order Order)
         {
             this.ID = ID;

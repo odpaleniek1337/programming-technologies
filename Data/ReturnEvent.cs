@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class ReturnEvent : Event
+    public class ReturnEvent : Event
     {
-        public string Reason { get; set; }
         public ReturnEvent(int ID, DateTime date, Order Order, string reason) : base(ID, date, Order)
         {
             this.ID = ID;
@@ -16,5 +15,6 @@ namespace Data
             this.Order = Order;
             this.Reason = reason;
         }
+        public override string Reason { get; set; }
     }
 }

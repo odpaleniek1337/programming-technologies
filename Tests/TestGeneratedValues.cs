@@ -63,12 +63,13 @@ namespace Tests
             Assert.AreEqual(Repository.GetProduct(2).Producer.ID, 6);
             Assert.AreEqual(Repository.GetProduct(2).Producer.YearOfCreation, 2010);
         }
-
+        
         [TestMethod]
         public void TestEventFields()
         {
-
             Assert.AreEqual(Repository.GetEvent(2).ID, 2);
+            Assert.AreEqual(Repository.GetEvent(2).ClientRating, 0);
+            Assert.AreEqual(Repository.GetEvent(2).Complain, null);
             Assert.AreEqual(Repository.GetEvent(2).Date, new DateTime(2021, 4, 11, 15, 2, 0));
             Assert.AreEqual(Repository.GetEvent(2).Order.ID, 2);
             Assert.AreEqual(Repository.GetEvent(2).Order.Payment.Method, 0);

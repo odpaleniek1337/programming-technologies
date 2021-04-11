@@ -8,7 +8,6 @@ namespace Data
 {
     class OrderEvent : Event
     {
-        public int ClientRating {get; set;}
         public OrderEvent(int ID, DateTime date, Order Order, int ClientRating) : base(ID, date, Order)
         {
             this.ID = ID;
@@ -16,5 +15,6 @@ namespace Data
             this.Order = Order;
             this.ClientRating = ClientRating;
         }
+        public override int ClientRating { get; set; }
     }
 }
