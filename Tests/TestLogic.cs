@@ -242,5 +242,19 @@ namespace Tests
             Assert.ThrowsException<Exception>(() => Shop.AddEvent(new ComplainEvent(7, new DateTime(2021, 4, 11, 17, 1, 0), Order5, "Stains on Shirt")));
             Assert.AreEqual(Shop.GetEventNumber(), 6);
         }
+        [TestMethod]
+        public void TestRemovingEvent()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Shop.RemoveEvent(4);
+            Assert.AreEqual(Shop.GetEventNumber(), 5);
+        }
+        [TestMethod]
+        public void TestRemovingWrongEvent()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Assert.ThrowsException<Exception>(() => Shop.RemoveEvent(11));
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+        }
     }
 }
