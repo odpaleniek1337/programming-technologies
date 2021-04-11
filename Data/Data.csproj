@@ -47,7 +47,6 @@
     <Compile Include="Event.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="OrderEvent.cs" />
-    <Compile Include="OrderStatus.cs" />
     <Compile Include="ReturnEvent.cs" />
     <Compile Include="Seasons.cs" />
     <Compile Include="Order.cs" />
