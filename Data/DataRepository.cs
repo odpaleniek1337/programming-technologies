@@ -218,7 +218,59 @@ namespace Data
         {
             if (!context.Events.ContainsKey(Event.ID))
             {
-                context.Events.Add(Event.ID, Event);
+                if (Event.GetType() == typeof(OrderEvent))
+                {
+                    int productId = Event.Order.Product.ID;
+                    if (context.States[productId].Quantity == 0) throw new Exception("Not enought products");
+                    else
+                    {
+                        context.States[productId].Quantity -= 1;
+                        context.Events.Add(Event.ID, Event);
+                    }
+                }
+                else if (Event.GetType() == typeof(ComplainEvent))
+                {
+                    Order order = Event.Order;
+                    Event LastEvent = null;
+                    Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
+                    foreach (Event e in valueColl)
+                    {
+                        if (e.Order == order) LastEvent = e;
+                    }
+                    if (LastEvent.GetType() == typeof(OrderEvent))
+                    {
+                        context.Events.Add(Event.ID, Event);
+                    }
+                    else
+                    {
+                        throw new Exception("Something is wrong, last event wasn't order");
+                    }
+                }
+                else if (Event.GetType() == typeof(ReturnEvent))
+                {
+                    Order order = Event.Order;
+                    Event LastEvent = null;
+                    Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
+                    foreach (Event e in valueColl)
+                    {
+                        if (e.Order == order) LastEvent = e;
+                    }
+                    if (LastEvent.GetType() == typeof(OrderEvent))
+                    {
+                        int productId = Event.Order.Product.ID;
+                        context.States[productId].Quantity += 1;
+                        context.Events.Add(Event.ID, Event);
+                    }
+                    else
+                    {
+                        throw new Exception("Something is wrong, last event wasn't order");
+                    }
+                    
+                }
+                else
+                {
+                    throw new Exception("Not valid Event");
+                }
             }
             else
             {
@@ -304,6 +356,10 @@ namespace Data
         public int GetProducersNumber()
         {
             return context.Events.Count;
+        }
+        public int GetBuyersNumber()
+        {
+            return context.Buyers.Count;
         }
         public List<Event> GetEventsHistory(Order Order)
         {

@@ -31,6 +31,10 @@ namespace Logic
         {
             return repository.GetOrders();
         }
+        Dictionary<int, Buyer> GetBuyers()
+        {
+            return repository.GetBuyers();
+        }
 
         // GET SPECIFIC
         public IProduct GetProduct(int ID)
@@ -48,6 +52,14 @@ namespace Logic
         public Producer GetProducer(int ID)
         {
             return repository.GetProducer(ID);
+        }
+        public Buyer GetBuyer(int ID)
+        {
+            return repository.GetBuyer(ID);
+        }
+        public int GetProductState(int ProductID)
+        {
+            return repository.GetProductState(ProductID);
         }
 
         // POST
@@ -67,7 +79,15 @@ namespace Logic
         {
             repository.AddProducer(Producer);
         }
-        
+        public void AddState(IProduct Product, int Quantity)
+        {
+            repository.AddState(Product, Quantity);
+        }
+        public void AddBuyer(Buyer Buyer)
+        {
+            repository.AddBuyer(Buyer);
+        }
+
         // DELETE
         public void RemoveProduct(int ID)
         {
@@ -85,6 +105,14 @@ namespace Logic
         {
             repository.RemoveProducer(ID);
         }
+        public void RemoveState(IProduct Product)
+        {
+            repository.RemoveState(Product);
+        }
+        public void RemoveBuyer(int ID)
+        {
+            repository.RemoveBuyer(ID);
+        }
 
         // UPDATE
         public void UpdateProduct(int ID, IProduct Product)
@@ -98,6 +126,14 @@ namespace Logic
         public void UpdateProducer(int ID, Producer Producer)
         {
             repository.UpdateProducer(ID, Producer);
+        }
+        public void UpdateState(IProduct Product, int Quantity)
+        {
+            repository.UpdateState(Product, Quantity);
+        }
+        public void UpdateBuyer(int ID, Buyer Buyer)
+        {
+            repository.UpdateBuyer(ID, Buyer);
         }
 
         // GET COUNT
@@ -117,20 +153,20 @@ namespace Logic
         {
             return repository.GetEventsNumber();
         }
-        
+        public int GetBuyersNumber()
+        {
+            return repository.GetBuyersNumber();
+        }
+
         // GET LAST EVENT OF ORDER
         public Event GetLastEvent(Order Order)
         {
             return repository.GetLastEvent(Order);
         }
+        // GET ALL EVENTS OF ORDER
         public List<Event> GetEventsHistory(Order Order)
         {
             return repository.GetEventsHistory(Order);
-        }
-        // GET STATE OF PRODUCT
-        public int GetProductState(int ProductID)
-        {
-            return repository.GetProductState(ProductID);
         }
     }
 }
