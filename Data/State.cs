@@ -8,6 +8,10 @@ namespace Data
 {
     public class State
     {
+        public State(int Quantity)
+        {
+            this.Quantity = Quantity;
+        }
         public int Quantity { get; set; }
     }
 }

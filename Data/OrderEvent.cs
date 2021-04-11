@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class OrderEvent : Event
+    public class OrderEvent : Event
     {
         public OrderEvent(int ID, DateTime date, Order Order, int ClientRating) : base(ID, date, Order)
         {

@@ -9,7 +9,8 @@ namespace Data
     public class FixedGenerator : IGenerator
     {
         public void Generate(DataContext Context)
-        {//Generating Producers
+        {
+            //Generating Producers
             Producer Producer1 = new Producer("Adidas", 1, 1997);
             Producer Producer2 = new Producer("Nike", 2, 1998);
             Producer Producer3 = new Producer("H&M", 5, 1999);
@@ -43,6 +44,17 @@ namespace Data
             Context.Products.Add(4, Shoes2);
             Context.Products.Add(5, Shoes3);
 
+            // Add 10 of each item
+            Context.States.Add(Hoodie1.ID, new State(10));
+            Context.States.Add(Hoodie2.ID, new State(10));
+            Context.States.Add(Jacket1.ID, new State(10));
+            Context.States.Add(Jacket2.ID, new State(10));
+            Context.States.Add(Shirt1.ID, new State(10));
+            Context.States.Add(Shirt2.ID, new State(10));
+            Context.States.Add(Shoes1.ID, new State(10));
+            Context.States.Add(Shoes2.ID, new State(10));
+            Context.States.Add(Shoes3.ID, new State(10));
+
             //Generating Buyers
             Buyer Buyer1 = new Buyer("Piotr", "Sienkiewicz", 0, 600600600);
             Buyer Buyer2 = new Buyer("Michal", "Grzyb", 1, 500900400);
@@ -55,7 +67,6 @@ namespace Data
             Context.Buyers.Add(3, Buyer4);
 
             //Generating Orders
-
             Order Order1 = new Order(0, Buyer1, Shoes1, 0);
             Order Order2 = new Order(1, Buyer2, Jacket2, 1);
             Order Order3 = new Order(2, Buyer3, Jacket1, 0);
@@ -65,16 +76,14 @@ namespace Data
             Context.Orders.Add(1, Order2);
             Context.Orders.Add(2, Order3);
             Context.Orders.Add(3, Order4);
-            //Generating Events
 
+            //Generating Events
             Event Event1 = new OrderEvent(0, new DateTime(2021, 4, 11, 15, 0, 0), Order1, 2);
             Event Event2 = new OrderEvent(1, new DateTime(2021, 4, 11, 15, 1, 0), Order2, 7);
             Event Event3 = new OrderEvent(2, new DateTime(2021, 4, 11, 15, 2, 0), Order3, 0);
             Event Event4 = new OrderEvent(3, new DateTime(2021, 4, 11, 15, 3, 0), Order4, 10);
             Event Event5 = new ComplainEvent(4, new DateTime(2021, 4, 11, 15, 4, 0), Order3, "Bad");
             Event Event6 = new ReturnEvent(5, new DateTime(2021, 4, 11, 15, 5, 0), Order1, "Wrong Size");
-
-            
 
             Context.Events.Add(0, Event1);
             Context.Events.Add(1, Event2);

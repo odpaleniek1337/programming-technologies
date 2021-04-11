@@ -63,15 +63,15 @@ namespace Data
             Context.Producers.Add(5, Producer5);
 
             // Generating Products
-            Hoodie Hoodie1 = new Hoodie(0, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
-            Hoodie Hoodie2 = new Hoodie(6, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer3, rand.Next(0, 3));
-            Jacket Jacket1 = new Jacket(1, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer5, rand.Next(0, 3));
-            Jacket Jacket2 = new Jacket(7, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
-            Shirt Shirt1 = new Shirt(8, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer3, rand.Next(0, 3));
-            Shirt Shirt2 = new Shirt(2, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
-            Shoes Shoes1 = new Shoes(3, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1, rand.Next(0, 3));
-            Shoes Shoes2 = new Shoes(4, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer2, rand.Next(0, 3));
-            Shoes Shoes3 = new Shoes(5, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1, rand.Next(0, 3));
+            Hoodie Hoodie1 = new Hoodie(0, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
+            Hoodie Hoodie2 = new Hoodie(6, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), RandomString(2), Producer3, rand.Next(0, 3));
+            Jacket Jacket1 = new Jacket(1, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), RandomString(2), Producer5, rand.Next(0, 3));
+            Jacket Jacket2 = new Jacket(7, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
+            Shirt Shirt1 = new Shirt(8, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), RandomString(2), Producer3, rand.Next(0, 3));
+            Shirt Shirt2 = new Shirt(2, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
+            Shoes Shoes1 = new Shoes(3, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1, rand.Next(0, 3));
+            Shoes Shoes2 = new Shoes(4, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer2, rand.Next(0, 3));
+            Shoes Shoes3 = new Shoes(5, RandomString(8), RandomStringNumber(8), (float)rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1, rand.Next(0, 3));
 
             Context.Products.Add(0, Hoodie1);
             Context.Products.Add(6, Hoodie2);
@@ -82,6 +82,17 @@ namespace Data
             Context.Products.Add(3, Shoes1);
             Context.Products.Add(4, Shoes2);
             Context.Products.Add(5, Shoes3);
+
+            // Generating stash of the products
+            Context.States.Add(Hoodie1.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Hoodie2.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Jacket1.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Jacket2.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Shirt1.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Shirt2.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Shoes1.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Shoes2.ID, new State(rand.Next(1, 20)));
+            Context.States.Add(Shoes3.ID, new State(rand.Next(1, 20)));
 
             // Generating Buyers
             Buyer Buyer1 = new Buyer(RandomString(8), RandomString(8), 0, rand.Next(100000000, 999999999));
@@ -99,11 +110,13 @@ namespace Data
             Order Order2 = new Order(1, Buyer2, Jacket2, rand.Next(0, 2));
             Order Order3 = new Order(2, Buyer3, Jacket1, rand.Next(0, 2));
             Order Order4 = new Order(3, Buyer4, Hoodie2, rand.Next(0, 2));
+            Order Order5 = new Order(4, Buyer1, Hoodie1, rand.Next(0, 2));
 
             Context.Orders.Add(0, Order1);
             Context.Orders.Add(1, Order2);
             Context.Orders.Add(2, Order3);
             Context.Orders.Add(3, Order4);
+            Context.Orders.Add(4, Order5);
 
             // Generating Events
             Event Event1 = new OrderEvent(0, RandomDate(), Order1, rand.Next(1, 5));

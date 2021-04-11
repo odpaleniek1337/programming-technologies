@@ -318,7 +318,7 @@ namespace Data
         {
             if (!context.States.ContainsKey(Product.ID))
             {
-                State State = new State();
+                State State = new State(0);
                 State.Quantity = Quantity;
                 context.States.Add(Product.ID, State);
             }
@@ -331,7 +331,7 @@ namespace Data
         {
             if (context.States.ContainsKey(Product.ID))
             {
-                State State = new State();
+                State State = new State(0);
                 State.Quantity = NewQuantity;
                 context.States[Product.ID] = State;
             }

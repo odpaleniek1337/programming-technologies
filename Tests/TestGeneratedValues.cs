@@ -59,6 +59,8 @@ namespace Tests
             Assert.AreEqual(Repository.GetProduct(2).Model, "Blue");
             Assert.AreEqual(Repository.GetProduct(2).Price, 22.22f);
             Assert.AreEqual(Repository.GetProduct(2).Size, "M");
+            Assert.AreEqual(Repository.GetProduct(2).SeasonID, 0);
+            Assert.AreEqual(Repository.GetProduct(2).GetSeason(), "Summer");
             Assert.AreEqual(Repository.GetProduct(2).Producer.Name, "Reserved");
             Assert.AreEqual(Repository.GetProduct(2).Producer.ID, 6);
             Assert.AreEqual(Repository.GetProduct(2).Producer.YearOfCreation, 2010);
@@ -85,6 +87,31 @@ namespace Tests
             Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.ID, 7);
             Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.Name, "North Face");
             Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.YearOfCreation, 1980);
+        }
+        [TestMethod]
+        public void TestStates()
+        {
+            // ORDER EVENT
+            Repository.AddOrder(new Order(10, Repository.GetBuyer(1), Repository.GetProduct(1), 0));
+            Repository.AddEvent(new OrderEvent(8, new DateTime(2021, 4, 11, 15, 2, 0), Repository.GetOrder(10), 5));
+            Assert.AreEqual(Repository.GetProductState(1), 9);
+
+            // FORCE CHANGE STATUS (AKA RESUPPLY)
+            Repository.UpdateState(Repository.GetProduct(0), 20);
+            Assert.AreEqual(Repository.GetProductState(0), 20);
+
+            // COPLAIN EVENT
+            Repository.AddEvent(new ComplainEvent(9, new DateTime(2021, 4, 11, 15, 2, 0), Repository.GetOrder(10), "Broken Zipper"));
+            Assert.AreEqual(Repository.GetLastEvent(Repository.GetOrder(10)), Repository.GetEvent(9));
+            Assert.AreEqual(Repository.GetEvent(9).Complain, "Broken Zipper");
+
+            // ORDER -> RETURN Status test
+            Assert.AreEqual(Repository.GetProductState(0), 20);
+            Repository.AddOrder(new Order(11, Repository.GetBuyer(1), Repository.GetProduct(0), 0));
+            Repository.AddEvent(new OrderEvent(10, new DateTime(2021, 4, 11, 15, 2, 0), Repository.GetOrder(11), 5));
+            Assert.AreEqual(Repository.GetProductState(0), 19);
+            Repository.AddEvent(new ReturnEvent(11, new DateTime(2021, 4, 11, 15, 2, 0), Repository.GetOrder(11), "Bad Size"));
+            Assert.AreEqual(Repository.GetProductState(0), 20);
         }
     }
 }
