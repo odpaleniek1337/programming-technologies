@@ -65,7 +65,7 @@ namespace Tests
             Assert.AreEqual(Repository.GetProduct(2).Producer.ID, 6);
             Assert.AreEqual(Repository.GetProduct(2).Producer.YearOfCreation, 2010);
         }
-        
+
         [TestMethod]
         public void TestEventFields()
         {
@@ -112,6 +112,15 @@ namespace Tests
             Assert.AreEqual(Repository.GetProductState(0), 19);
             Repository.AddEvent(new ReturnEvent(11, new DateTime(2021, 4, 11, 15, 2, 0), Repository.GetOrder(11), "Bad Size"));
             Assert.AreEqual(Repository.GetProductState(0), 20);
+        }
+        [TestMethod]
+        public void TestNumberOfElements()
+        {
+            Assert.AreEqual(Repository.GetProductsNumber(), 9);
+            Assert.AreEqual(Repository.GetEventsNumber(), 6);
+            Assert.AreEqual(Repository.GetOrdersNumber(), 4);
+            Assert.AreEqual(Repository.GetProducersNumber(), 6);
+            Assert.AreEqual(Repository.GetBuyersNumber(), 4);
         }
     }
 }

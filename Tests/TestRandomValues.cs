@@ -108,6 +108,16 @@ namespace Tests
                 Repository.AddEvent(new ReturnEvent(10, new DateTime(2021, 4, 11, 15, 2, 0), Repository.GetOrder(4), "Bad Size"));
                 Assert.AreEqual(Repository.GetProductState(0), status + 1);
             }
+
+            [TestMethod]
+            public void TestNumberOfElements()
+            {
+                Assert.AreEqual(Repository.GetProductsNumber(), 9);
+                Assert.AreEqual(Repository.GetEventsNumber(), 6);
+                Assert.AreEqual(Repository.GetOrdersNumber(), 5);
+                Assert.AreEqual(Repository.GetProducersNumber(), 6);
+                Assert.AreEqual(Repository.GetBuyersNumber(), 4);
+            }
         }
     }
 }
