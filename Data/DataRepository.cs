@@ -357,6 +357,10 @@ namespace Data
         {
             return context.Events.Count;
         }
+        public int GetBuyersNumber()
+        {
+            return context.Buyers.Count;
+        }
         public List<Event> GetEventsHistory(Order Order)
         {
             List<Event> events = new List<Event>();

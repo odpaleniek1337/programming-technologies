@@ -72,7 +72,7 @@ namespace Data
             Event Event3 = new OrderEvent(2, new DateTime(2021, 4, 11, 15, 2, 0), Order3, 0);
             Event Event4 = new OrderEvent(3, new DateTime(2021, 4, 11, 15, 3, 0), Order4, 10);
             Event Event5 = new ComplainEvent(4, new DateTime(2021, 4, 11, 15, 4, 0), Order3, "Bad");
-            Event Event6 = new ReturnEvent(4, new DateTime(2021, 4, 11, 15, 5, 0), Order1, "Wrong Size");
+            Event Event6 = new ReturnEvent(5, new DateTime(2021, 4, 11, 15, 5, 0), Order1, "Wrong Size");
 
             Context.Events.Add(0, Event1);
             Context.Events.Add(1, Event2);
