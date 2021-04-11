@@ -14,5 +14,7 @@ namespace Data
         float Price { get; set; }
         string Size { get; set; }
         Producer Producer { get; set; }
+        int SeasonID { get; set; }
+        string GetSeason();
     }
 }
