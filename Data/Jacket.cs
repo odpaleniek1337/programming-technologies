@@ -25,5 +25,9 @@ namespace Data
         public string Size { get; set; }
         public Producer Producer { get; set; }
         public int SeasonId { get; set; }
+        public string GetSeason(int SeasonId)
+        {
+            return Enum.GetName(typeof(Seasons), SeasonId);
+        }
     }
 }
