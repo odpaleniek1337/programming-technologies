@@ -53,15 +53,15 @@ namespace Data
             Context.Producers.Add(4, Producer4);
             Context.Producers.Add(5, Producer5);
 
-            Hoodie Hoodie1 = new Hoodie(0, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4);
-            Hoodie Hoodie2 = new Hoodie(6, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer3);
-            Jacket Jacket1 = new Jacket(1, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer5);
-            Jacket Jacket2 = new Jacket(7, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4);
-            Shirt Shirt1 = new Shirt(8, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer3);
-            Shirt Shirt2 = new Shirt(2, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4);
-            Shoes Shoes1 = new Shoes(3, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1);
-            Shoes Shoes2 = new Shoes(4, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer2);
-            Shoes Shoes3 = new Shoes(5, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1);
+            Hoodie Hoodie1 = new Hoodie(0, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
+            Hoodie Hoodie2 = new Hoodie(6, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer3, rand.Next(0, 3));
+            Jacket Jacket1 = new Jacket(1, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer5, rand.Next(0, 3));
+            Jacket Jacket2 = new Jacket(7, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
+            Shirt Shirt1 = new Shirt(8, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer3, rand.Next(0, 3));
+            Shirt Shirt2 = new Shirt(2, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), RandomString(2), Producer4, rand.Next(0, 3));
+            Shoes Shoes1 = new Shoes(3, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1, rand.Next(0, 3));
+            Shoes Shoes2 = new Shoes(4, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer2, rand.Next(0, 3));
+            Shoes Shoes3 = new Shoes(5, RandomString(8), RandomStringNumber(8), rand.Next(10, 200), rand.Next(30, 45).ToString(), Producer1, rand.Next(0, 3));
         }      
     }
 }
