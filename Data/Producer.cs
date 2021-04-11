@@ -8,8 +8,14 @@ namespace Data
 {
     public class Producer
     {
+        public Producer(string Name, int ID, int YearOfCreation)
+        {
+            this.Name = Name;
+            this.ID = ID;
+            this.YearOfCreation = YearOfCreation;
+        }
         public string Name { get; set; }
         public int ID { get; set; }
-        public string YearOfCreation { get; set; }
+        public int YearOfCreation { get; set; }
     }
 }

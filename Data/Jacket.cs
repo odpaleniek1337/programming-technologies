@@ -8,7 +8,7 @@ namespace Data
 {
     public class Jacket : IProduct
     {
-        public Jacket(int ID, string Name, string Model, float Price, string Size, Producer Producer, int SeasonId)
+        public Jacket(int ID, string Name, string Model, float Price, string Size, Producer Producer, int SeasonID)
         {
             this.ID = ID;
             this.Name = Name;
@@ -16,7 +16,7 @@ namespace Data
             this.Price = Price;
             this.Size = Size;
             this.Producer = Producer;
-            this.SeasonId = SeasonId;
+            this.SeasonID = SeasonID;
         }
         public int ID { get; set; }
         public string Name { get; set; }
@@ -24,10 +24,10 @@ namespace Data
         public float Price { get; set; }
         public string Size { get; set; }
         public Producer Producer { get; set; }
-        public int SeasonId { get; set; }
-        public string GetSeason(int SeasonId)
+        public int SeasonID { get; set; }
+        public string GetSeason(int SeasonID)
         {
-            return Enum.GetName(typeof(Seasons), SeasonId);
+            return Enum.GetName(typeof(Seasons), SeasonID);
         }
     }
 }
