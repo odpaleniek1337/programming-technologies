@@ -119,7 +119,7 @@ namespace Tests
             Assert.AreEqual(Repository.GetProductsNumber(), 9);
             Assert.AreEqual(Repository.GetEventsNumber(), 6);
             Assert.AreEqual(Repository.GetOrdersNumber(), 4);
-            Assert.AreEqual(Repository.GetProducersNumber(), 6);
+            Assert.AreEqual(Repository.GetProducersNumber(), 5);
             Assert.AreEqual(Repository.GetBuyersNumber(), 4);
         }
     }

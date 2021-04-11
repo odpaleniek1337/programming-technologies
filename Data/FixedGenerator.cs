@@ -19,9 +19,9 @@ namespace Data
 
             Context.Producers.Add(1, Producer1);
             Context.Producers.Add(2, Producer2);
-            Context.Producers.Add(3, Producer3);
-            Context.Producers.Add(4, Producer4);
-            Context.Producers.Add(5, Producer5);
+            Context.Producers.Add(5, Producer3);
+            Context.Producers.Add(6, Producer4);
+            Context.Producers.Add(7, Producer5);
 
             //Generating Products
             Hoodie Hoodie1 = new Hoodie(0, "Sunny Longsleeve", "Black", 72.05f, "M", Producer4, 1);

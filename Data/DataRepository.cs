@@ -167,7 +167,7 @@ namespace Data
         }
         public void AddProducer(Producer Producer)
         {
-            if (!context.Orders.ContainsKey(Producer.ID))
+            if (!context.Producers.ContainsKey(Producer.ID))
             {
                 context.Producers.Add(Producer.ID, Producer);
             }
@@ -365,7 +365,7 @@ namespace Data
         }
         public int GetProducersNumber()
         {
-            return context.Events.Count;
+            return context.Producers.Count;
         }
         public int GetBuyersNumber()
         {
