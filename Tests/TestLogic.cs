@@ -120,5 +120,127 @@ namespace Tests
             Assert.ThrowsException<Exception>(() => Shop.UpdateProducer(4, Producer2));
             Assert.AreEqual(Shop.GetProducersNumber(), 5);
         }
+        [TestMethod]
+        public void TestAddingProduct()
+        {
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+            Hoodie Hoodie3 = new Hoodie(9, "Fast Boi", "McQueen", 26.13f, "S", Shop.GetProducer(5), 3);
+            Shop.AddProduct(Hoodie3);
+            Assert.AreEqual(Shop.GetProduct(9), Hoodie3);
+            Assert.AreEqual(Shop.GetProductsNumber(), 10);
+        }
+        [TestMethod]
+        public void TestAddingWrongProduct()
+        {
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+            Hoodie Hoodie3 = new Hoodie(8, "Fast Boi", "McQueen", 26.13f, "S", Shop.GetProducer(5), 3);
+            Assert.ThrowsException<Exception>(() => Shop.AddProduct(Hoodie3));
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+        }
+        [TestMethod]
+        public void TestDeletingProduct()
+        {
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+            Shop.RemoveProduct(6);
+            Assert.AreEqual(Shop.GetProductsNumber(), 8);
+        }
+        [TestMethod]
+        public void TestDeletingWrongProduct()
+        {
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+            Assert.ThrowsException<Exception>(() => Shop.RemoveProduct(11));
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+        }
+        [TestMethod]
+        public void TestUpdatingProduct()
+        {
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+            Hoodie Hoodie3 = new Hoodie(8, "Fast Boi", "McQueen", 26.13f, "S", Shop.GetProducer(5), 3);
+            Shop.UpdateProduct(8, Hoodie3);
+            Assert.AreEqual(Shop.GetProduct(8), Hoodie3);
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+        }
+        [TestMethod]
+        public void TestUpdatingWrongProduct()
+        {
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+            Hoodie Hoodie3 = new Hoodie(11, "Fast Boi", "McQueen", 26.13f, "S", Shop.GetProducer(5), 3);
+            Assert.ThrowsException<Exception>(() => Shop.UpdateProduct(11, Hoodie3));
+            Assert.AreEqual(Shop.GetProductsNumber(), 9);
+        }
+        [TestMethod]
+        public void TestAddingOrder()
+        {
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+            Order Order5 = new Order(4, Shop.GetBuyer(3), Shop.GetProduct(5), 0);
+            Shop.AddOrder(Order5);
+            Assert.AreEqual(Shop.GetOrder(4), Order5);
+            Assert.AreEqual(Shop.GetOrdersNumber(), 5);
+        }
+        [TestMethod]
+        public void TestAddingWrongOrder()
+        {
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+            Order Order5 = new Order(3, Shop.GetBuyer(3), Shop.GetProduct(5), 1);
+            Assert.ThrowsException<Exception>(() => Shop.AddOrder(Order5));
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+        }
+        [TestMethod]
+        public void TestDeletingOrder()
+        {
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+            Shop.RemoveOrder(2);
+            Assert.AreEqual(Shop.GetOrdersNumber(), 3);
+        }
+        [TestMethod]
+        public void TestDeletingWrongOrder()
+        {
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+            Assert.ThrowsException<Exception>(() => Shop.RemoveOrder(11));
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+        }
+        [TestMethod]
+        public void TestUpdatingOrder()
+        {
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+            Order Order5 = new Order(3, Shop.GetBuyer(3), Shop.GetProduct(5), 1);
+            Shop.UpdateOrder(3, Order5);
+            Assert.AreEqual(Shop.GetOrder(3), Order5);
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+        }
+        [TestMethod]
+        public void TestUpdatingWrongOrder()
+        {
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+            Hoodie Hoodie3 = new Hoodie(11, "Fast Boi", "McQueen", 26.13f, "S", Shop.GetProducer(5), 3);
+            Assert.ThrowsException<Exception>(() => Shop.UpdateProduct(11, Hoodie3));
+            Assert.AreEqual(Shop.GetOrdersNumber(), 4);
+        }
+        [TestMethod]
+        public void TestAddingEventToExistingOrder()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Event Event7 = new ReturnEvent(6, new DateTime(2021, 4, 11, 17, 1, 0), Shop.GetOrder(1), "Wrong Size");
+            Shop.AddEvent(Event7);
+            Assert.AreEqual(Shop.GetEvent(6), Event7);
+            Assert.AreEqual(Shop.GetEventNumber(), 7);
+        }
+        [TestMethod]
+        public void TestAddingWrongEvent()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Event Event7 = new ReturnEvent(5, new DateTime(2021, 4, 11, 17, 1, 0), Shop.GetOrder(1), "Wrong Size");
+            Assert.ThrowsException<Exception>(() => Shop.AddEvent(Event7));
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+        }
+        [TestMethod]
+        public void TestAddingWrongComplainEventWithoutOrder()
+        {
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+            Order Order5 = new Order(5, Shop.GetBuyer(3), Shop.GetProduct(8), 0);
+            Shop.AddOrder(Order5);
+            Assert.ThrowsException<Exception>(() => Shop.AddEvent(new ComplainEvent(7, new DateTime(2021, 4, 11, 17, 1, 0), Order5, "Stains on Shirt")));
+            Assert.AreEqual(Shop.GetEventNumber(), 6);
+        }
     }
 }

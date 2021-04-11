@@ -247,6 +247,10 @@ namespace Data
                     {
                         if (e.Order == order) LastEvent = e;
                     }
+                    if (LastEvent == null)
+                    {
+                        throw new Exception("Something is wrong, last event wasn't order");
+                    }
                     if (LastEvent.GetType() == typeof(OrderEvent))
                     {
                         context.Events.Add(Event.ID, Event);
@@ -264,6 +268,10 @@ namespace Data
                     foreach (Event e in valueColl)
                     {
                         if (e.Order == order) LastEvent = e;
+                    }
+                    if (LastEvent == null)
+                    {
+                        throw new Exception("Something is wrong, last event wasn't order");
                     }
                     if (LastEvent.GetType() == typeof(OrderEvent))
                     {
