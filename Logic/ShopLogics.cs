@@ -7,7 +7,7 @@ using Data;
 
 namespace Logic
 {
-    class ShopLogics
+    public class ShopLogics
     {
         // GET ALL
         public IRepository repository;
