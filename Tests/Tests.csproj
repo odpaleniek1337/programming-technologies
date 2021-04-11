@@ -52,7 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestGeneratedValues.cs" />
     <Compile Include="TestRandomValues.cs" />
-    <Compile Include="TestData.cs" />
     <Compile Include="TestLogic.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,7 +73,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataTests\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
