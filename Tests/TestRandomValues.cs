@@ -26,7 +26,7 @@ namespace Tests
             {
                 Assert.IsTrue(Repository.GetProducer(2).Name.Length == 6);
                 Assert.IsTrue(Repository.GetProducer(2).ID == 2);
-                Assert.IsTrue(Repository.GetProducer(2).YearOfCreation > 1950);
+                Assert.IsTrue(Repository.GetProducer(2).YearOfCreation > 1951);
             }
             [TestMethod]
             public void TestBuyerFields()

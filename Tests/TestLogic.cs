@@ -242,5 +242,24 @@ namespace Tests
             Assert.ThrowsException<Exception>(() => Shop.AddEvent(new ComplainEvent(7, new DateTime(2021, 4, 11, 17, 1, 0), Order5, "Stains on Shirt")));
             Assert.AreEqual(Shop.GetEventNumber(), 6);
         }
+        [TestMethod]
+        public void TestGetLastEvent()
+        {
+            Order Order5 = new Order(4, Shop.GetBuyer(3), Shop.GetProduct(5), 0);
+            Shop.AddOrder(Order5);
+            Shop.AddEvent(new OrderEvent(10, new DateTime(2021, 4, 11, 17, 1, 0), Order5, 1));
+            Assert.AreEqual(Shop.GetLastEvent(Order5), Shop.GetEvent(10));
+            Assert.AreEqual(Shop.GetLastEvent(Order5).Order, Shop.GetEvent(10).Order);
+            Assert.AreEqual(Shop.GetLastEvent(Order5).Date, Shop.GetEvent(10).Date);
+        }
+        [TestMethod]
+        public void TestGetEventsHistory()
+        {
+            Order Order5 = new Order(4, Shop.GetBuyer(3), Shop.GetProduct(5), 0);
+            Shop.AddOrder(Order5);
+            Shop.AddEvent(new OrderEvent(10, new DateTime(2021, 4, 11, 17, 1, 0), Order5, 1));
+            Assert.AreEqual(Shop.GetEventsHistory(Order5)[0], Shop.GetEvent(10));
+        }
     }
 }
+
