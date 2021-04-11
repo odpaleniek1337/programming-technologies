@@ -305,7 +305,7 @@ namespace Data
         {
             return context.Events.Count;
         }
-        public List<Event> GetStateHistory(Order Order)
+        public List<Event> GetEventsHistory(Order Order)
         {
             List<Event> events = new List<Event>();
             Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
@@ -315,7 +315,7 @@ namespace Data
             }
             return events;
         }
-        public Event GetLastState(Order Order)
+        public Event GetLastEvent(Order Order)
         {
             Event LastEvent = null;
             Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
@@ -324,6 +324,18 @@ namespace Data
                 if (e.Order == Order) LastEvent = e;
             }
             return LastEvent;
+        }
+        public int GetProductState(int ProductID)
+        {
+            if (context.States.ContainsKey(ProductID))
+            {
+                int quantity = context.States[ProductID].Quantity;
+                return quantity;
+            }
+            else
+            {
+                throw new Exception("There is no State with that Product.ID");
+            }
         }
     }
 }

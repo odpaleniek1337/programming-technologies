@@ -118,14 +118,19 @@ namespace Logic
             return repository.GetEventsNumber();
         }
         
-        // GET STATE OF ORDER
-        public Event GetLastState(Order Order)
+        // GET LAST EVENT OF ORDER
+        public Event GetLastEvent(Order Order)
         {
-            return repository.GetLastState(Order);
+            return repository.GetLastEvent(Order);
         }
-        public List<Event> GetStateHistory(Order Order)
+        public List<Event> GetEventsHistory(Order Order)
         {
-            return repository.GetStateHistory(Order);
+            return repository.GetEventsHistory(Order);
+        }
+        // GET STATE OF PRODUCT
+        public int GetProductState(int ProductID)
+        {
+            return repository.GetProductState(ProductID);
         }
     }
 }
