@@ -8,9 +8,9 @@ namespace Data
 {
     public class DataRepository : IRepository
     {
-        private DataContext context;
+        private IDataContext context;
 
-        public DataRepository(DataContext context)
+        public DataRepository(IDataContext context)
         {
             this.context = context;
         }

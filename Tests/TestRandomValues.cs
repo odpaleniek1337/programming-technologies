@@ -12,7 +12,7 @@ namespace Tests
         {
             private IRepository Repository;
             private IGenerator Generator;
-            private DataContext Context;
+            private IDataContext Context;
             [TestInitialize]
             public void Initialize()
             {

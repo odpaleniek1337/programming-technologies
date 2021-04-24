@@ -9,11 +9,11 @@ namespace Tests
     {
         private IRepository Repository;
         private IGenerator Generator;
-        private DataContext Context;
+        private IDataContext Context;
         [TestInitialize]
         public void Initialize()
         {
-            Context = new DataContext();
+            //Context = new IDataContext();
             Repository = new DataRepository(Context);
             Generator = new FixedGenerator();
             Generator.Generate(Context);

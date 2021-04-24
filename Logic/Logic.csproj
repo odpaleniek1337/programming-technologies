@@ -45,8 +45,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopLogics.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{4cf86600-88e0-41d9-9357-a27256a3517e}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

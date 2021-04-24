@@ -8,6 +8,6 @@ namespace Data
 {
     public interface IGenerator
     {
-        void Generate(DataContext Context);
+        void Generate(IDataContext Context);
     }
 }

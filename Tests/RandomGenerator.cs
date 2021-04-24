@@ -46,7 +46,7 @@ namespace Data
             return start.AddDays(gen.Next(range));
 
         }
-        public void Generate(DataContext Context)
+        public void Generate(IDataContext Context)
         {
             var rand = new Random();
             // Generating Producers

@@ -8,7 +8,7 @@ namespace Data
 {
     public class FixedGenerator : IGenerator
     {
-        public void Generate(DataContext Context)
+        public void Generate(IDataContext Context)
         {
             //Generating Producers
             Producer Producer1 = new Producer("Adidas", 1, 1997);
