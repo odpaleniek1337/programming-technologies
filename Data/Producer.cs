@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class Producer
+    public class Producer : IProducer
     {
         public Producer(string Name, int ID, int YearOfCreation)
         {

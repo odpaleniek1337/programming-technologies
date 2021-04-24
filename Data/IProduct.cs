@@ -13,7 +13,7 @@ namespace Data
         string Model { get; set; }
         float Price { get; set; }
         string Size { get; set; }
-        Producer Producer { get; set; }
+        IProducer Producer { get; set; }
         int SeasonID { get; set; }
         string GetSeason();
     }

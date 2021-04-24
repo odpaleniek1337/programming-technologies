@@ -8,7 +8,7 @@ namespace Data
 {
     public class ReturnEvent : Event
     {
-        public ReturnEvent(int ID, DateTime date, Order Order, string reason) : base(ID, date, Order)
+        public ReturnEvent(int ID, DateTime date, IOrder Order, string reason) : base(ID, date, Order)
         {
             this.ID = ID;
             this.Date = date;

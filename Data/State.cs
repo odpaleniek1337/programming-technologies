@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class State
+    public class State : IState
     {
         public State(int Quantity)
         {

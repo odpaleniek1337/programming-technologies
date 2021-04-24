@@ -8,7 +8,7 @@ namespace Data
 {
     public class ComplainEvent : Event
     {
-        public ComplainEvent(int ID, DateTime date, Order Order, string Complain) : base(ID, date, Order)
+        public ComplainEvent(int ID, DateTime date, IOrder Order, string Complain) : base(ID, date, Order)
         {
             this.ID = ID;
             this.Date = date;

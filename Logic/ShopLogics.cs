@@ -19,19 +19,19 @@ namespace Logic
         {
             return repository.GetProducts();
         }
-        Dictionary<int, Event> GetEvents()
+        Dictionary<int, IEvent> GetEvents()
         {
             return repository.GetEvents();
         }
-        Dictionary<int, Producer> GetProducers()
+        Dictionary<int, IProducer> GetProducers()
         {
             return repository.GetProducers();
         }
-        Dictionary<int, Order> GetOrders()
+        Dictionary<int, IOrder> GetOrders()
         {
             return repository.GetOrders();
         }
-        Dictionary<int, Buyer> GetBuyers()
+        Dictionary<int, IBuyer> GetBuyers()
         {
             return repository.GetBuyers();
         }
@@ -41,19 +41,19 @@ namespace Logic
         {
             return repository.GetProduct(ID);
         }
-        public Event GetEvent(int ID)
+        public IEvent GetEvent(int ID)
         {
             return repository.GetEvent(ID);
         }
-        public Order GetOrder(int ID)
+        public IOrder GetOrder(int ID)
         {
             return repository.GetOrder(ID);
         }
-        public Producer GetProducer(int ID)
+        public IProducer GetProducer(int ID)
         {
             return repository.GetProducer(ID);
         }
-        public Buyer GetBuyer(int ID)
+        public IBuyer GetBuyer(int ID)
         {
             return repository.GetBuyer(ID);
         }
@@ -67,15 +67,15 @@ namespace Logic
         {
             repository.AddProduct(Product);
         }
-        public void AddEvent(Event Event)
+        public void AddEvent(IEvent Event)
         {
             repository.AddEvent(Event);
         }
-        public void AddOrder(Order Order)
+        public void AddOrder(IOrder Order)
         {
             repository.AddOrder(Order);
         }
-        public void AddProducer(Producer Producer)
+        public void AddProducer(IProducer Producer)
         {
             repository.AddProducer(Producer);
         }
@@ -83,7 +83,7 @@ namespace Logic
         {
             repository.AddState(Product, Quantity);
         }
-        public void AddBuyer(Buyer Buyer)
+        public void AddBuyer(IBuyer Buyer)
         {
             repository.AddBuyer(Buyer);
         }
@@ -119,11 +119,11 @@ namespace Logic
         {
             repository.UpdateProduct(ID, Product);
         }
-        public void UpdateOrder(int ID, Order Order)
+        public void UpdateOrder(int ID, IOrder Order)
         {
             repository.UpdateOrder(ID, Order);
         }
-        public void UpdateProducer(int ID, Producer Producer)
+        public void UpdateProducer(int ID, IProducer Producer)
         {
             repository.UpdateProducer(ID, Producer);
         }
@@ -131,7 +131,7 @@ namespace Logic
         {
             repository.UpdateState(Product, Quantity);
         }
-        public void UpdateBuyer(int ID, Buyer Buyer)
+        public void UpdateBuyer(int ID, IBuyer Buyer)
         {
             repository.UpdateBuyer(ID, Buyer);
         }
@@ -159,12 +159,12 @@ namespace Logic
         }
 
         // GET LAST EVENT OF ORDER
-        public Event GetLastEvent(Order Order)
+        public IEvent GetLastEvent(IOrder Order)
         {
             return repository.GetLastEvent(Order);
         }
         // GET ALL EVENTS OF ORDER
-        public List<Event> GetEventsHistory(Order Order)
+        public List<IEvent> GetEventsHistory(IOrder Order)
         {
             return repository.GetEventsHistory(Order);
         }

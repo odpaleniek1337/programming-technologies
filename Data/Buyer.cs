@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class Buyer
+    public class Buyer : IBuyer
     {
         public Buyer(string Name, string Surname, int ID, int PhoneNumber)
         {

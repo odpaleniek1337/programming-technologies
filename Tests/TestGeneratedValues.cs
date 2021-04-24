@@ -13,7 +13,7 @@ namespace Tests
         [TestInitialize]
         public void Initialize()
         {
-            //Context = new IDataContext();
+            Context = new DataContext();
             Repository = new DataRepository(Context);
             Generator = new FixedGenerator();
             Generator.Generate(Context);

@@ -63,11 +63,11 @@ namespace Data
                 throw new Exception("There is no Product with that ID!");
             }
         }
-        public Dictionary<int,Buyer> GetBuyers()
+        public Dictionary<int,IBuyer> GetBuyers()
         {
             return context.Buyers;
         }
-        public void AddBuyer(Buyer Buyer)
+        public void AddBuyer(IBuyer Buyer)
         {
             if(!context.Buyers.ContainsKey(Buyer.ID))
             { 
@@ -78,7 +78,7 @@ namespace Data
                 throw new Exception("There is already a Buyer created with that ID");
             }
         }
-        Buyer IRepository.GetBuyer(int ID)
+        IBuyer IRepository.GetBuyer(int ID)
         {
             if (context.Buyers.ContainsKey(ID))
             {
@@ -89,7 +89,7 @@ namespace Data
                 throw new Exception("There is no Buyer with that ID");
             }
         }
-        public void UpdateBuyer(int ID, Buyer Buyer)
+        public void UpdateBuyer(int ID, IBuyer Buyer)
         {
             if (context.Buyers.ContainsKey(ID))
             {
@@ -112,11 +112,11 @@ namespace Data
             }
         }
 
-        public Dictionary<int, Order> GetOrders()
+        public Dictionary<int, IOrder> GetOrders()
         {
             return context.Orders;
         }
-        public void AddOrder(Order Order)
+        public void AddOrder(IOrder Order)
         {
             if (!context.Orders.ContainsKey(Order.ID))
             {
@@ -127,7 +127,7 @@ namespace Data
                 throw new Exception("There is already an Order created with that ID");
             }
         }
-        Order IRepository.GetOrder(int ID)
+        IOrder IRepository.GetOrder(int ID)
         {
             if (context.Orders.ContainsKey(ID))
             {
@@ -138,7 +138,7 @@ namespace Data
                 throw new Exception("There is no Order with that ID");
             }
         }
-        public void UpdateOrder(int ID, Order Order)
+        public void UpdateOrder(int ID, IOrder Order)
         {
             if (context.Orders.ContainsKey(ID))
             {
@@ -161,11 +161,11 @@ namespace Data
             }
         }
 
-        public Dictionary<int, Producer> GetProducers()
+        public Dictionary<int, IProducer> GetProducers()
         {
             return context.Producers;
         }
-        public void AddProducer(Producer Producer)
+        public void AddProducer(IProducer Producer)
         {
             if (!context.Producers.ContainsKey(Producer.ID))
             {
@@ -176,7 +176,7 @@ namespace Data
                 throw new Exception("There is already an Producer created with that ID");
             }
         }
-        Producer IRepository.GetProducer(int ID)
+        IProducer IRepository.GetProducer(int ID)
         {
             if (context.Producers.ContainsKey(ID))
             {
@@ -187,7 +187,7 @@ namespace Data
                 throw new Exception("There is no Producer with that ID");
             }
         }
-        public void UpdateProducer(int ID, Producer Producer)
+        public void UpdateProducer(int ID, IProducer Producer)
         {
             if (context.Producers.ContainsKey(ID))
             {
@@ -210,20 +210,20 @@ namespace Data
             }
         }
 
-        public Dictionary<int, Event> GetEvents()
+        public Dictionary<int, IEvent> GetEvents()
         {
             return context.Events;
         }
-        public void AddEvent(Event Event)
+        public void AddEvent(IEvent Event)
         {
             if (!context.Events.ContainsKey(Event.ID))
             {
                 if (Event.GetType() == typeof(OrderEvent))
                 {
-                    Order order = Event.Order;
-                    Event LastEvent = null;
-                    Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
-                    foreach (Event e in valueColl)
+                    IOrder order = Event.Order;
+                    IEvent LastEvent = null;
+                    Dictionary<int, IEvent>.ValueCollection valueColl = context.Events.Values;
+                    foreach (IEvent e in valueColl)
                     {
                         if (e.Order == order) LastEvent = e;
                     }
@@ -240,10 +240,10 @@ namespace Data
                 }
                 else if (Event.GetType() == typeof(ComplainEvent))
                 {
-                    Order order = Event.Order;
-                    Event LastEvent = null;
-                    Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
-                    foreach (Event e in valueColl)
+                    IOrder order = Event.Order;
+                    IEvent LastEvent = null;
+                    Dictionary<int, IEvent>.ValueCollection valueColl = context.Events.Values;
+                    foreach (IEvent e in valueColl)
                     {
                         if (e.Order == order) LastEvent = e;
                     }
@@ -262,10 +262,10 @@ namespace Data
                 }
                 else if (Event.GetType() == typeof(ReturnEvent))
                 {
-                    Order order = Event.Order;
-                    Event LastEvent = null;
-                    Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
-                    foreach (Event e in valueColl)
+                    IOrder order = Event.Order;
+                    IEvent LastEvent = null;
+                    Dictionary<int, IEvent>.ValueCollection valueColl = context.Events.Values;
+                    foreach (IEvent e in valueColl)
                     {
                         if (e.Order == order) LastEvent = e;
                     }
@@ -295,7 +295,7 @@ namespace Data
                 throw new Exception("There is already an Event created with that ID");
             }
         }
-        Event IRepository.GetEvent(int ID)
+        IEvent IRepository.GetEvent(int ID)
         {
             if (context.Events.ContainsKey(ID))
             {
@@ -318,7 +318,7 @@ namespace Data
             }
         }
 
-        public Dictionary<int, State> GetStates()
+        public Dictionary<int, IState> GetStates()
         {
             return context.States;
         }
@@ -379,21 +379,21 @@ namespace Data
         {
             return context.Buyers.Count;
         }
-        public List<Event> GetEventsHistory(Order Order)
+        public List<IEvent> GetEventsHistory(IOrder Order)
         {
-            List<Event> events = new List<Event>();
-            Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
-            foreach (Event e in valueColl)
+            List<IEvent> events = new List<IEvent>();
+            Dictionary<int, IEvent>.ValueCollection valueColl = context.Events.Values;
+            foreach (IEvent e in valueColl)
             {
                 if (e.Order == Order) events.Add(e);
             }
             return events;
         }
-        public Event GetLastEvent(Order Order)
+        public IEvent GetLastEvent(IOrder Order)
         {
-            Event LastEvent = null;
-            Dictionary<int, Event>.ValueCollection valueColl = context.Events.Values;
-            foreach (Event e in valueColl)
+            IEvent LastEvent = null;
+            Dictionary<int, IEvent>.ValueCollection valueColl = context.Events.Values;
+            foreach (IEvent e in valueColl)
             {
                 if (e.Order == Order) LastEvent = e;
             }

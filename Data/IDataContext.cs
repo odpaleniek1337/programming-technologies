@@ -9,10 +9,10 @@ namespace Data
     public abstract class IDataContext
     {
         public Dictionary<int, IProduct> Products = new Dictionary<int, IProduct>();
-        public Dictionary<int, Buyer> Buyers = new Dictionary<int, Buyer>();
-        public Dictionary<int, Order> Orders = new Dictionary<int, Order>();
-        public Dictionary<int, Producer> Producers = new Dictionary<int, Producer>();
-        public Dictionary<int, Event> Events = new Dictionary<int, Event>();
-        public Dictionary<int, State> States = new Dictionary<int, State>();
+        public Dictionary<int, IBuyer> Buyers = new Dictionary<int, IBuyer>();
+        public Dictionary<int, IOrder> Orders = new Dictionary<int, IOrder>();
+        public Dictionary<int, IProducer> Producers = new Dictionary<int, IProducer>();
+        public Dictionary<int, IEvent> Events = new Dictionary<int, IEvent>();
+        public Dictionary<int, IState> States = new Dictionary<int, IState>();
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class Order
+    public class Order : IOrder
     {
-        public Order(int ID, Buyer Buyer, IProduct Product, int PaymentMethod)
+        public Order(int ID, IBuyer Buyer, IProduct Product, int PaymentMethod)
         {
             this.ID = ID;
             this.Buyer = Buyer;
@@ -17,7 +17,7 @@ namespace Data
         }
         public IProduct Product { get; set; }
         public int ID { get; set; }
-        public Buyer Buyer { get; set; }
+        public IBuyer Buyer { get; set; }
         public Payment Payment { get; set; }
     }
 }
