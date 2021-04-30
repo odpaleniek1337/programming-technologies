@@ -26,7 +26,7 @@ namespace Tests
             {
                 Assert.IsTrue(Repository.GetProducer(2).Name.Length == 6);
                 Assert.IsTrue(Repository.GetProducer(2).ID == 2);
-                Assert.IsTrue(Repository.GetProducer(2).YearOfCreation > 1951);
+                Assert.IsTrue(Repository.GetProducer(2).YearOfCreation > 1949);
             }
             [TestMethod]
             public void TestBuyerFields()
@@ -51,7 +51,7 @@ namespace Tests
                 Assert.IsTrue(Repository.GetOrder(3).Product.Size.Length == 2);
                 Assert.IsTrue(Repository.GetOrder(3).Product.Producer.Name.Length == 6);
                 Assert.AreEqual(Repository.GetOrder(3).Product.Producer.ID, 3);
-                Assert.IsTrue(Repository.GetOrder(3).Product.Producer.YearOfCreation > 1951);
+                Assert.IsTrue(Repository.GetOrder(3).Product.Producer.YearOfCreation > 1949);
             }
             [TestMethod]
             public void TestProductFields()
@@ -65,7 +65,7 @@ namespace Tests
                 Assert.IsTrue(Repository.GetProduct(2).GetSeason().Length > 0);
                 Assert.IsTrue(Repository.GetProduct(2).Producer.Name.Length == 6);
                 Assert.AreEqual(Repository.GetProduct(2).Producer.ID, 4);
-                Assert.IsTrue(Repository.GetProduct(2).Producer.YearOfCreation > 1951);
+                Assert.IsTrue(Repository.GetProduct(2).Producer.YearOfCreation > 1949);
             }
             [TestMethod]
             public void TestEventFields()
@@ -89,7 +89,7 @@ namespace Tests
                 Assert.IsTrue(Repository.GetEvent(2).Order.Product.Size.Length == 2);
                 Assert.AreEqual(Repository.GetEvent(2).Order.Product.Producer.ID, 5);
                 Assert.IsTrue(Repository.GetEvent(2).Order.Product.Producer.Name.Length == 6);
-                Assert.IsTrue(Repository.GetEvent(2).Order.Product.Producer.YearOfCreation > 1951);
+                Assert.IsTrue(Repository.GetEvent(2).Order.Product.Producer.YearOfCreation > 1949);
             }
             [TestMethod]
             public void TestStates()

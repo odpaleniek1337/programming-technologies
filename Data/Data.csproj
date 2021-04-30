@@ -48,7 +48,6 @@
     <Compile Include="IBuyer.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IEvent.cs" />
-    <Compile Include="IGenerator.cs" />
     <Compile Include="IOrder.cs" />
     <Compile Include="IProducer.cs" />
     <Compile Include="IRepository.cs" />

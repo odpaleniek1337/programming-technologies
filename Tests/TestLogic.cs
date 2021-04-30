@@ -16,7 +16,7 @@ namespace Tests
         public void Initialize()
         {
             Context = new DataContext();
-            Shop = new ShopLogics(new DataRepository(Context));
+            Shop = new ShopLogics(new RepositoryTest(Context));
             Generator = new FixedGenerator();
             Generator.Generate(Context);
         }
