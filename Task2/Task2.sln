@@ -17,6 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6D7697BD-5F12-4C75-9D6A-7009ED08843A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C639FECC-26C4-443A-B3C4-0601F450A8B9} = {C639FECC-26C4-443A-B3C4-0601F450A8B9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,9 +16,7 @@ CREATE TABLE Products(
 	season VARCHAR(50),
 	quantity int NOT NULL,
 
-CONSTRAINT PK_products PRIMARY KEY(id),
-CONSTRAINT FK_producers FOREIGN KEY (producer_id) REFERENCES Producers(id),
-);
+CONSTRAINT PK_products PRIMARY KEY(id));
 
 CREATE TABLE Orders(
 	id int IDENTITY(1,1) NOT NULL,
