@@ -9,7 +9,7 @@ namespace Tests
     public class TestLogic
     {
         private ShopLogics Shop;
-        private DataContext Context;
+        private IDataContext Context;
         private IGenerator Generator;
 
         [TestInitialize]
