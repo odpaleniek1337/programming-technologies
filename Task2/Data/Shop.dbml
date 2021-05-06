@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PT" Class="ShopDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-GG5E1N6;Initial Catalog=PT;Integrated Security=True" SettingsObjectName="Data.Properties.Settings" SettingsPropertyName="PTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Buyers" Member="Buyers">
+    <Type Name="Buyer">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Buyer_Order" Member="Orders" ThisKey="id" OtherKey="buyer_id" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Events" Member="Events">
+    <Type Name="Event">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="order_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Association Name="Order_Event" Member="Order" ThisKey="order_id" OtherKey="id" Type="Order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="buyer_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="is_payed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Order_Event" Member="Events" ThisKey="id" OtherKey="order_id" Type="Event" />
+      <Association Name="Buyer_Order" Member="Buyer" ThisKey="buyer_id" OtherKey="id" Type="Buyer" IsForeignKey="true" />
+      <Association Name="Product_Order" Member="Product" ThisKey="product_id" OtherKey="id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Producers" Member="Producers">
+    <Type Name="Producer">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="year_of_creation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Producer_Product" Member="Products" ThisKey="id" OtherKey="producer_id" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="model" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="size" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="producer_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="season" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_Order" Member="Orders" ThisKey="id" OtherKey="product_id" Type="Order" />
+      <Association Name="Producer_Product" Member="Producer" ThisKey="producer_id" OtherKey="id" Type="Producer" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

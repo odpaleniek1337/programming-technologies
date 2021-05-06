@@ -1,0 +1,49 @@
+CREATE TABLE Buyers(
+	id int IDENTITY(1,1) NOT NULL,
+	name VARCHAR(50),
+	surname VARCHAR(50),
+	phone VARCHAR(50),
+CONSTRAINT PK_buyers PRIMARY KEY(id)
+);
+
+CREATE TABLE Producers(
+	id int IDENTITY(1,1) NOT NULL,
+	name VARCHAR(50),
+	year_of_creation int,
+CONSTRAINT PK_producers PRIMARY KEY(id)
+);
+
+CREATE TABLE Products(
+	id int IDENTITY(1,1) NOT NULL,
+	name VARCHAR(50),
+	model VARCHAR(50),
+	price float,
+	size int,
+	producer_id int,
+	season VARCHAR(50),
+	quantity int NOT NULL,
+
+CONSTRAINT PK_products PRIMARY KEY(id),
+CONSTRAINT FK_producers FOREIGN KEY (producer_id) REFERENCES Producers(id),
+);
+
+CREATE TABLE Orders(
+	id int IDENTITY(1,1) NOT NULL,
+	product_id int,
+	buyer_id int,
+	is_payed bit,
+
+CONSTRAINT PK_orders PRIMARY KEY(id),
+CONSTRAINT FK_products FOREIGN KEY (product_id) REFERENCES Products(id),
+CONSTRAINT FK_buyers FOREIGN KEY (buyer_id) REFERENCES Buyers(id),
+);
+
+CREATE TABLE Events(
+	id int IDENTITY(1,1) NOT NULL,
+	date Timestamp,
+	order_id int,
+	description VARCHAR(256),
+
+CONSTRAINT PK_events PRIMARY KEY(id),
+CONSTRAINT FK_orders FOREIGN KEY (order_id) REFERENCES Orders(id),
+);

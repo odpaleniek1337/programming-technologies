@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Logic
 {
-    public interface IState
+    class OrderService
     {
-        int Quantity { get; set; }
     }
 }
