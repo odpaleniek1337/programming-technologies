@@ -13,7 +13,7 @@ namespace Logic
         public IRepository repository;
         public ShopLogics(IRepository repository)
         {
-            this.repository = repository;
+            this.repository = new DataRepository(new DataContext());
         }
         Dictionary<int, IProduct> GetProducts()
         {

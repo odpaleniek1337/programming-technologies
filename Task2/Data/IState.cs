@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class DataContext : IDataContext
+    public interface IState
     {
-        
+        int Quantity { get; set; }
     }
 }
