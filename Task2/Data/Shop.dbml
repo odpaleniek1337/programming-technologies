@@ -15,6 +15,7 @@
       <Column Name="date" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Column Name="order_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="description" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
+      <Column Member="type" Type="System.String" CanBeNull="false" UpdateCheck="Always" />
       <Association Name="Order_Event" Member="Order" ThisKey="order_id" OtherKey="id" Type="Order" IsForeignKey="true" />
     </Type>
   </Table>
@@ -29,14 +30,6 @@
       <Association Name="Product_Order" Member="Product" ThisKey="product_id" OtherKey="id" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Producers" Member="Producers">
-    <Type Name="Producer">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="year_of_creation" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Producer_Product" Member="Products" ThisKey="id" OtherKey="producer_id" Type="Product" />
-    </Type>
-  </Table>
   <Table Name="dbo.Products" Member="Products">
     <Type Name="Product">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -44,11 +37,9 @@
       <Column Name="model" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="size" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="producer_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="season" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="producer_id" Member="producer" Storage="_producer_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_Order" Member="Orders" ThisKey="id" OtherKey="product_id" Type="Order" />
-      <Association Name="Producer_Product" Member="Producer" ThisKey="producer_id" OtherKey="id" Type="Producer" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

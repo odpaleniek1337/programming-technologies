@@ -43,12 +43,10 @@
   <ItemGroup>
     <Compile Include="BuyerService.cs" />
     <Compile Include="EventService.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="ProducerService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShopLogics.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

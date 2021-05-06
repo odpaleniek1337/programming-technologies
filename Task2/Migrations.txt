@@ -6,20 +6,13 @@ CREATE TABLE Buyers(
 CONSTRAINT PK_buyers PRIMARY KEY(id)
 );
 
-CREATE TABLE Producers(
-	id int IDENTITY(1,1) NOT NULL,
-	name VARCHAR(50),
-	year_of_creation int,
-CONSTRAINT PK_producers PRIMARY KEY(id)
-);
-
 CREATE TABLE Products(
 	id int IDENTITY(1,1) NOT NULL,
 	name VARCHAR(50),
 	model VARCHAR(50),
 	price float,
 	size int,
-	producer_id int,
+	producer_id VARCHAR(50),
 	season VARCHAR(50),
 	quantity int NOT NULL,
 
