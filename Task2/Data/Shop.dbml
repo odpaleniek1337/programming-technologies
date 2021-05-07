@@ -12,10 +12,10 @@
   <Table Name="dbo.Events" Member="Events">
     <Type Name="Event">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="date" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="order_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="description" Type="System.String" DbType="VarChar(256)" CanBeNull="true" />
-      <Column Member="type" Type="System.String" CanBeNull="false" UpdateCheck="Always" />
       <Association Name="Order_Event" Member="Order" ThisKey="order_id" OtherKey="id" Type="Order" IsForeignKey="true" />
     </Type>
   </Table>
@@ -37,7 +37,8 @@
       <Column Name="model" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="size" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="producer_id" Member="producer" Storage="_producer_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="producer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="season" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_Order" Member="Orders" ThisKey="id" OtherKey="product_id" Type="Order" />
     </Type>

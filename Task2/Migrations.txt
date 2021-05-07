@@ -12,7 +12,7 @@ CREATE TABLE Products(
 	model VARCHAR(50),
 	price float,
 	size int,
-	producer_id VARCHAR(50),
+	producer VARCHAR(50),
 	season VARCHAR(50),
 	quantity int NOT NULL,
 
@@ -31,8 +31,9 @@ CONSTRAINT FK_buyers FOREIGN KEY (buyer_id) REFERENCES Buyers(id),
 
 CREATE TABLE Events(
 	id int IDENTITY(1,1) NOT NULL,
-	date Timestamp,
+	date DATETIME,
 	order_id int,
+	type VARCHAR(50),
 	description VARCHAR(256),
 
 CONSTRAINT PK_events PRIMARY KEY(id),
