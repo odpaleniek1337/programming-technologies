@@ -6,9 +6,9 @@ using Data;
 
 namespace Service
 {
-    class ProductService
+    public class ProductService
     {
-        public IEnumerable<Product> GetProducts()
+        static public IEnumerable<Product> GetProducts()
         {
             using (var context = new ShopDataContext())
             {
@@ -16,7 +16,7 @@ namespace Service
             }
         }
 
-        public Product GetProductById(int id)
+        static public Product GetProductById(int id)
         {
             using (var context = new ShopDataContext())
             {
@@ -47,7 +47,7 @@ namespace Service
             }
         }
 
-        public Product GetProductByModel(string model)
+        static public Product GetProductByModel(string model)
         {
             using (var context = new ShopDataContext())
             {
@@ -61,11 +61,11 @@ namespace Service
                 return null;
             }
         }
-        public bool AddProduct(string name, string model, float price, int size, string producer, string season, int quantity)
+        static public bool AddProduct(string name, string model, float price, int size, string producer, string season, int quantity)
         {
             using (var context = new ShopDataContext())
             {
-                if (GetProductByName(name) == null && !name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
+                if (GetProductByModel(model) == null && !name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
                 {
                     Product NewProduct = new Product
                     {
@@ -73,6 +73,7 @@ namespace Service
                         model = model,
                         price = price,
                         size = size,
+                        producer = producer,
                         season = season,
                         quantity = quantity,
                     };
@@ -84,7 +85,7 @@ namespace Service
             }
         }
 
-        public bool UpdateProduct(int id, string name, float price, int size, string producer, string season, int quantity)
+        static public bool UpdateProduct(int id, string name, float price, int size, string producer, string season, int quantity)
         {
             using (var context = new ShopDataContext())
             {
@@ -104,7 +105,22 @@ namespace Service
             }
         }
 
-        public bool DeleteProduct(int id)
+        static public bool UpdateProductQuantity(int id, int quantity)
+        {
+            using (var context = new ShopDataContext())
+            {
+                Product Product = context.Products.SingleOrDefault(i => i.id == id);
+                if (!quantity.Equals(null))
+                {
+                    Product.quantity = quantity;
+                    context.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        static public bool DeleteProduct(int id)
         {
             using (var context = new ShopDataContext())
             {

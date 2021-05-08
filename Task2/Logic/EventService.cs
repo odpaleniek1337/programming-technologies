@@ -6,9 +6,9 @@ using Data;
 
 namespace Service
 {
-    class EventService
+    public class EventService
     {
-        static public IEnumerable<Event> GetEvent()
+        static public IEnumerable<Event> GetEvents()
         {
             using (var context = new ShopDataContext())
             {
@@ -55,7 +55,7 @@ namespace Service
                 {
                     if (type == "orderEvent")
                     {
-                        if (GetEventsByOrderId(order_id) == null)
+                        if (GetEventsByOrderId(order_id).Count() == 0)
                         {
                             Order Order = context.Orders.SingleOrDefault(i => i.id == order_id);
                             Product Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);

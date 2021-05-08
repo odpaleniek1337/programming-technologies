@@ -6,7 +6,7 @@ using Data;
 
 namespace Service
 {
-    class OrderService
+    public class OrderService
     {
         public IEnumerable<Order> GetOrder()
         {
@@ -16,13 +16,29 @@ namespace Service
             }
         }
 
-        public Order GetOrderById(int id)
+        static public Order GetOrderById(int id)
         {
             using (var context = new ShopDataContext())
             {
                 foreach (Order Order in context.Orders.ToList())
                 {
                     if (Order.id.Equals(id))
+                    {
+                        return Order;
+                    }
+                }
+                return null;
+            }
+        }
+
+        static public Order GetLatestOrderByProductAndBuyer(int product_id, int buyer_id)
+        {
+            using (var context = new ShopDataContext())
+            {
+
+                foreach (Order Order in context.Orders.ToList().OrderByDescending (p =>p.id))
+                {
+                    if (Order.product_id.Equals(product_id) && Order.buyer_id.Equals(buyer_id))
                     {
                         return Order;
                     }
@@ -47,7 +63,7 @@ namespace Service
             }
         }
 
-        public bool AddOrder(int product_id, int buyer_id, bool is_payed, string event_description)
+        static public bool AddOrder(int product_id, int buyer_id, bool is_payed, string event_description)
         {
             using (var context = new ShopDataContext())
             {
@@ -61,13 +77,17 @@ namespace Service
                     };
                     context.Orders.InsertOnSubmit(NewOrder);
                     context.SubmitChanges();
-                    return EventService.AddEvent(DateTime.Now, NewOrder.id, "orderEvent", event_description); ;
+
+
+                    DateTime dateTime = DateTime.Now;
+
+                    return EventService.AddEvent(dateTime, GetLatestOrderByProductAndBuyer(product_id, buyer_id).id, "orderEvent", event_description);
                 }
                 return false;
             }
         }
 
-        public bool UpdateOrder(int id, int buyer_id)
+        static public bool UpdateOrder(int id, int buyer_id)
         {
             using (var context = new ShopDataContext())
             {
@@ -82,7 +102,7 @@ namespace Service
             }
         }
 
-        public bool DeleteOrder(int id)
+        static public bool DeleteOrder(int id)
         {
             using (var context = new ShopDataContext())
             {
@@ -90,12 +110,12 @@ namespace Service
                 if (GetOrderById(id) != null && !id.Equals(null))
                 {
                     context.Orders.DeleteOnSubmit(Order);
-                    context.SubmitChanges();
                     List<Event> events = (List<Event>)EventService.GetEventsByOrderId(id);
                     foreach (Event item in events)
                     {
                         EventService.DeleteEvent(item.id);
                     }
+                    context.SubmitChanges();
                     return true;
                 }
                 return false;

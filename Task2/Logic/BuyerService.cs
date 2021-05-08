@@ -6,9 +6,9 @@ using Data;
 
 namespace Service
 {
-    class BuyerService
+    public class BuyerService
     {
-        public IEnumerable<Buyer> GetBuyers()
+        static public IEnumerable<Buyer> GetBuyers()
         {
             using (var context = new ShopDataContext())
             {
@@ -16,7 +16,7 @@ namespace Service
             }
         }
 
-        public Buyer GetBuyer(string Phone)
+        static public Buyer GetBuyer(string Phone)
         {
             using (var context = new ShopDataContext())
             {
@@ -31,7 +31,7 @@ namespace Service
             }
         }
 
-        public bool AddBuyer(string Name, string Surname, string Phone)
+        static public bool AddBuyer(string Name, string Surname, string Phone)
         {
             using (var context = new ShopDataContext())
             {
@@ -51,7 +51,7 @@ namespace Service
             }
         }
 
-        public bool UpdateBuyer(int id, string Name, string Surname, string Phone)
+        static public bool UpdateBuyer(int id, string Name, string Surname, string Phone)
         {
             using (var context = new ShopDataContext())
             {
@@ -68,7 +68,7 @@ namespace Service
             }
         }
 
-        public bool DeleteBuyer(string Phone)
+        static public bool DeleteBuyer(string Phone)
         {
             using (var context = new ShopDataContext())
             {
