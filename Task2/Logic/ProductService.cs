@@ -85,14 +85,15 @@ namespace Service
             }
         }
 
-        static public bool UpdateProduct(int id, string name, float price, int size, string producer, string season, int quantity)
+        static public bool UpdateProduct(int id, string name, string model, float price, int size, string producer, string season, int quantity)
         {
             using (var context = new ShopDataContext())
             {
                 Product Product = context.Products.SingleOrDefault(i => i.id == id);
-                if (name.Equals(null) && !price.Equals(null) && !size.Equals(null) && !producer.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
+                if (!name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !producer.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
                 {
                     Product.name = name;
+                    Product.model = model;
                     Product.price = price;
                     Product.size = size;
                     Product.producer = producer;

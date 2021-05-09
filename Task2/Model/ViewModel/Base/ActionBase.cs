@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Model.ViewModel
 {
-    class ActionBase : ICommand
+    public class ActionBase : ICommand
     {
         #region private
         private readonly Action execute = null;
