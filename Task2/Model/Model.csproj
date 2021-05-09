@@ -41,12 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyerListViewModel.cs" />
+    <Compile Include="IWindow.cs" />
+    <Compile Include="ProductListViewModel.cs" />
+    <Compile Include="ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Base\ActionBase.cs" />
     <Compile Include="ViewModel\Base\ViewModelBase.cs" />
-    <Compile Include="ViewModel\BuyersViewModel.cs" />
+    <Compile Include="BuyersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{4CF86600-88E0-41D9-9357-A27256A3517E}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Service.csproj">
       <Project>{C639FECC-26C4-443A-B3C4-0601F450A8B9}</Project>
       <Name>Service</Name>
