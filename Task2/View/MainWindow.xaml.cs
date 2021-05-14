@@ -12,17 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
+using Model.ViewModel;
 
 namespace View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            BuyersViewModel buyersViewModel = (BuyersViewModel)DataContext;
+            buyersViewModel.MessageBoxShowDelegate = text => MessageBox.Show(text, "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Service
 {
     public class EventService
     {
-        static public IEnumerable<Event> GetEvents()
+        static public IEnumerable<Events> GetEvents()
         {
             using (var context = new ShopDataContext())
             {
@@ -16,11 +16,11 @@ namespace Service
             }
         }
 
-        static public Event GetEventById(int id)
+        static public Events GetEventById(int id)
         {
             using (var context = new ShopDataContext())
             {
-                foreach (Event Event in context.Events.ToList())
+                foreach (Events Event in context.Events.ToList())
                 {
                     if (Event.id.Equals(id))
                     {
@@ -31,12 +31,12 @@ namespace Service
             }
         }
 
-        static public IEnumerable<Event> GetEventsByOrderId(int order_id)
+        static public IEnumerable<Events> GetEventsByOrderId(int order_id)
         {
             using (var context = new ShopDataContext())
             {
-                List<Event> result = new List<Event>();
-                foreach (Event Event in context.Events.ToList())
+                List<Events> result = new List<Events>();
+                foreach (Events Event in context.Events.ToList())
                 {
                     if (Event.order_id.Equals(order_id))
                     {
@@ -57,13 +57,13 @@ namespace Service
                     {
                         if (GetEventsByOrderId(order_id).Count() == 0)
                         {
-                            Order Order = context.Orders.SingleOrDefault(i => i.id == order_id);
-                            Product Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);
+                            Orders Order = context.Orders.SingleOrDefault(i => i.id == order_id);
+                            Products Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);
                             if (Product.quantity > 0)
                             {
                                 Product.quantity -= 1;
 
-                                Event NewEvent = new Event
+                                Events NewEvent = new Events
                                 {
                                     date = date,
                                     order_id = order_id,
@@ -86,12 +86,12 @@ namespace Service
                     }
                     if (type == "returnEvent")
                     {
-                        Order Order = context.Orders.SingleOrDefault(i => i.id == order_id);
-                        Product Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);
+                        Orders Order = context.Orders.SingleOrDefault(i => i.id == order_id);
+                        Products Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);
 
                         Product.quantity += 1;
 
-                        Event NewEvent = new Event
+                        Events NewEvent = new Events
                         {
                             date = date,
                             order_id = order_id,
@@ -104,10 +104,10 @@ namespace Service
                     }
                     if (type == "complainEvent")
                     {
-                        Order Order = context.Orders.SingleOrDefault(i => i.id == order_id);
-                        Product Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);
+                        Orders Order = context.Orders.SingleOrDefault(i => i.id == order_id);
+                        Products Product = context.Products.SingleOrDefault(i => i.id == Order.product_id);
 
-                        Event NewEvent = new Event
+                        Events NewEvent = new Events
                         {
                             date = date,
                             order_id = order_id,
@@ -127,7 +127,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Event Event = context.Events.SingleOrDefault(i => i.id == id);
+                Events Event = context.Events.SingleOrDefault(i => i.id == id);
                 if (!description.Equals(null))
                 {
                     Event.description = description;
@@ -142,7 +142,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Event Event = context.Events.SingleOrDefault(i => i.id == id);
+                Events Event = context.Events.SingleOrDefault(i => i.id == id);
                 if (GetEventById(id) != null && !id.Equals(null))
                 {
                     context.Events.DeleteOnSubmit(Event);

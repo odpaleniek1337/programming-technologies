@@ -15,7 +15,7 @@ namespace Tests
         {
             using (var db = new ShopDataContext())
             {
-                Product Product1 = new Product();
+                Products Product1 = new Products();
                 Product1.name = "SB Black";
                 Product1.model = "#343412a";
                 Product1.price = 200.00;
@@ -27,7 +27,7 @@ namespace Tests
                 db.Products.InsertOnSubmit(Product1);
                 db.SubmitChanges();
 
-                Product Product2 = db.Products.FirstOrDefault(p => p.name.Equals("SB Black"));
+                Products Product2 = db.Products.FirstOrDefault(p => p.name.Equals("SB Black"));
                 Assert.IsNotNull(Product2);
                 Assert.AreEqual(Product2.name, "SB Black");
                 Assert.AreEqual(Product2.model, "#343412a");
@@ -44,7 +44,7 @@ namespace Tests
         {
             using (var db = new ShopDataContext())
             {
-                Product Product = db.Products.FirstOrDefault(p => p.model.Equals("#343412a"));
+                Products Product = db.Products.FirstOrDefault(p => p.model.Equals("#343412a"));
                 Assert.IsNotNull(Product);
                 db.Products.DeleteOnSubmit(Product);
                 db.SubmitChanges();
@@ -56,7 +56,7 @@ namespace Tests
         {
             using (var db = new ShopDataContext())
             {
-                Product product = db.Products.FirstOrDefault(p => p.model.Equals("a1337"));
+                Products product = db.Products.FirstOrDefault(p => p.model.Equals("a1337"));
                 Assert.IsNull(product);
             }
         }

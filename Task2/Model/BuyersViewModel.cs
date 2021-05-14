@@ -3,6 +3,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Data;
 
 namespace Model
 {
@@ -88,6 +89,16 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
+        private Buyers currentBuyer;
+        public Buyers CurrentBuyer
+        {
+            get => currentBuyer;
+            set
+            {
+                currentBuyer = value;
+                OnPropertyChanged("CurrentBuyer");
+            }
+        }
         private void UpdateBuyer()
         {
             bool updated = BuyerService.UpdateBuyer(ID, Name, Surname, Phone);
@@ -113,6 +124,20 @@ namespace Model
                 text = "Cannot delete Buyer";
             }
             MessageBoxShowDelegate(Text);
+        }
+
+        private IEnumerable<Buyers> buyers;
+        public IEnumerable<Buyers> Buyers
+        {
+            get
+            {
+                return buyers;
+            }
+            set
+            {
+                buyers = value;
+                OnPropertyChanged("Buyers");
+            }
         }
 
         private string text;

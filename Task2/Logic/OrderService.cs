@@ -8,7 +8,7 @@ namespace Service
 {
     public class OrderService
     {
-        public IEnumerable<Order> GetOrder()
+        public IEnumerable<Orders> GetOrder()
         {
             using (var context = new ShopDataContext())
             {
@@ -16,11 +16,11 @@ namespace Service
             }
         }
 
-        static public Order GetOrderById(int id)
+        static public Orders GetOrderById(int id)
         {
             using (var context = new ShopDataContext())
             {
-                foreach (Order Order in context.Orders.ToList())
+                foreach (Orders Order in context.Orders.ToList())
                 {
                     if (Order.id.Equals(id))
                     {
@@ -31,12 +31,12 @@ namespace Service
             }
         }
 
-        static public Order GetLatestOrderByProductAndBuyer(int product_id, int buyer_id)
+        static public Orders GetLatestOrderByProductAndBuyer(int product_id, int buyer_id)
         {
             using (var context = new ShopDataContext())
             {
 
-                foreach (Order Order in context.Orders.ToList().OrderByDescending (p =>p.id))
+                foreach (Orders Order in context.Orders.ToList().OrderByDescending (p =>p.id))
                 {
                     if (Order.product_id.Equals(product_id) && Order.buyer_id.Equals(buyer_id))
                     {
@@ -47,12 +47,12 @@ namespace Service
             }
         }
 
-        static public IEnumerable<Order> GetOrdersByProductId(int product_id)
+        static public IEnumerable<Orders> GetOrdersByProductId(int product_id)
         {
             using (var context = new ShopDataContext())
             {
-                List<Order> result = new List<Order>();
-                foreach (Order Order in context.Orders.ToList())
+                List<Orders> result = new List<Orders>();
+                foreach (Orders Order in context.Orders.ToList())
                 {
                     if (Order.product_id.Equals(product_id))
                     {
@@ -69,7 +69,7 @@ namespace Service
             {
                 if (!product_id.Equals(null) && !buyer_id.Equals(null) && !is_payed.Equals(null))
                 {
-                    Order NewOrder = new Order
+                    Orders NewOrder = new Orders
                     {
                         product_id = product_id,
                         buyer_id = buyer_id,
@@ -91,7 +91,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Order Order = context.Orders.SingleOrDefault(i => i.id == id);
+                Orders Order = context.Orders.SingleOrDefault(i => i.id == id);
                 if (!buyer_id.Equals(null))
                 {
                     Order.buyer_id = buyer_id;
@@ -106,12 +106,12 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Order Order = context.Orders.SingleOrDefault(i => i.id == id);
+                Orders Order = context.Orders.SingleOrDefault(i => i.id == id);
                 if (GetOrderById(id) != null && !id.Equals(null))
                 {
                     context.Orders.DeleteOnSubmit(Order);
-                    List<Event> events = (List<Event>)EventService.GetEventsByOrderId(id);
-                    foreach (Event item in events)
+                    List<Events> events = (List<Events>)EventService.GetEventsByOrderId(id);
+                    foreach (Events item in events)
                     {
                         EventService.DeleteEvent(item.id);
                     }

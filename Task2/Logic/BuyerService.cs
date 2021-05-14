@@ -8,7 +8,7 @@ namespace Service
 {
     public class BuyerService
     {
-        static public IEnumerable<Buyer> GetBuyers()
+        static public IEnumerable<Buyers> GetBuyers()
         {
             using (var context = new ShopDataContext())
             {
@@ -16,11 +16,11 @@ namespace Service
             }
         }
 
-        static public Buyer GetBuyer(string Phone)
+        static public Buyers GetBuyer(string Phone)
         {
             using (var context = new ShopDataContext())
             {
-                foreach (Buyer Buyer in context.Buyers.ToList())
+                foreach (Buyers Buyer in context.Buyers.ToList())
                 {
                     if (Buyer.phone.Equals(Phone))
                     {
@@ -37,7 +37,7 @@ namespace Service
             {
                 if (GetBuyer(Phone) == null && !Name.Equals(null) && !Surname.Equals(null) && !Phone.Equals(null))
                 {
-                    Buyer NewBuyer = new Buyer
+                    Buyers NewBuyer = new Buyers
                     {
                         name = Name,
                         surname = Surname,
@@ -55,7 +55,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Buyer Buyer = context.Buyers.SingleOrDefault(i => i.id == id);
+                Buyers Buyer = context.Buyers.SingleOrDefault(i => i.id == id);
                 if (GetBuyer(Phone) == null && !Name.Equals(null) && !Surname.Equals(null) && !Phone.Equals(null))
                 {
                     Buyer.name = Name;
@@ -72,7 +72,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Buyer Buyer = context.Buyers.SingleOrDefault(i => i.phone == Phone);
+                Buyers Buyer = context.Buyers.SingleOrDefault(i => i.phone == Phone);
                 if (GetBuyer(Phone) != null && !Phone.Equals(null))
                 {
                     context.Buyers.DeleteOnSubmit(Buyer);

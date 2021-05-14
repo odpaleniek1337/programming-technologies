@@ -8,7 +8,7 @@ namespace Service
 {
     public class ProductService
     {
-        static public IEnumerable<Product> GetProducts()
+        static public IEnumerable<Products> GetProducts()
         {
             using (var context = new ShopDataContext())
             {
@@ -16,11 +16,11 @@ namespace Service
             }
         }
 
-        static public Product GetProductById(int id)
+        static public Products GetProductById(int id)
         {
             using (var context = new ShopDataContext())
             {
-                foreach (Product Product in context.Products.ToList())
+                foreach (Products Product in context.Products.ToList())
                 {
                     if (Product.id.Equals(id))
                     {
@@ -31,12 +31,12 @@ namespace Service
             }
         }
 
-        static public IEnumerable<Product> GetProductByName(string name)
+        static public IEnumerable<Products> GetProductByName(string name)
         {
             using (var context = new ShopDataContext())
             {
-                List<Product> result = new List<Product>();
-                foreach (Product Product in context.Products.ToList())
+                List<Products> result = new List<Products>();
+                foreach (Products Product in context.Products.ToList())
                 {
                     if (Product.name.Equals(name))
                     {
@@ -47,11 +47,11 @@ namespace Service
             }
         }
 
-        static public Product GetProductByModel(string model)
+        static public Products GetProductByModel(string model)
         {
             using (var context = new ShopDataContext())
             {
-                foreach (Product Product in context.Products.ToList())
+                foreach (Products Product in context.Products.ToList())
                 {
                     if (Product.model.Equals(model))
                     {
@@ -67,7 +67,7 @@ namespace Service
             {
                 if (GetProductByModel(model) == null && !name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
                 {
-                    Product NewProduct = new Product
+                    Products NewProduct = new Products
                     {
                         name = name,
                         model = model,
@@ -89,7 +89,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Product Product = context.Products.SingleOrDefault(i => i.id == id);
+                Products Product = context.Products.SingleOrDefault(i => i.id == id);
                 if (!name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !producer.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
                 {
                     Product.name = name;
@@ -110,7 +110,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Product Product = context.Products.SingleOrDefault(i => i.id == id);
+                Products Product = context.Products.SingleOrDefault(i => i.id == id);
                 if (!quantity.Equals(null))
                 {
                     Product.quantity = quantity;
@@ -125,7 +125,7 @@ namespace Service
         {
             using (var context = new ShopDataContext())
             {
-                Product Product = context.Products.SingleOrDefault(i => i.id == id);
+                Products Product = context.Products.SingleOrDefault(i => i.id == id);
                 if (GetProductById(id) != null && !id.Equals(null))
                 {
                     context.Products.DeleteOnSubmit(Product);

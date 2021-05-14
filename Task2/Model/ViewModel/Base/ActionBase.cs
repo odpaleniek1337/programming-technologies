@@ -6,8 +6,8 @@ namespace Model.ViewModel
     public class ActionBase : ICommand
     {
         #region private
-        private readonly Action execute = null;
-        private readonly Predicate<object> canExecute = null;
+        private readonly Action execute;
+        private readonly Predicate<object> canExecute;
         #endregion
 
         public event EventHandler CanExecuteChanged;
