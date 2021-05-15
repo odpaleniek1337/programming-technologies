@@ -77,8 +77,8 @@ namespace Data.API
         {
             using (var context = new ShopDataContext())
             {
-                Buyers Buyer = context.Buyers.SingleOrDefault(i => i.id == id);
-                if (GetBuyer(Phone) == null && !Name.Equals(null) && !Surname.Equals(null) && !Phone.Equals(null))
+                Buyers Buyer = context.Buyers.SingleOrDefault(i => i.phone == Phone);
+                if (GetBuyer(Phone) != null && !Name.Equals(null) && !Surname.Equals(null) && !Phone.Equals(null))
                 {
                     Buyer.name = Name;
                     Buyer.surname = Surname;

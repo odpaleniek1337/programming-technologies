@@ -8,7 +8,7 @@ using Model.ViewModel;
 
 namespace Model
 {
-    class ProductViewModel : ViewModelBase
+    public class ProductViewModel : ViewModelBase
     {
         private ProductService service;
         public ProductViewModel(ProductService service)
@@ -17,6 +17,7 @@ namespace Model
         }
         ProductViewModel()
         {
+            service = new ProductService();
             AddProductCommand = new ActionBase(AddProduct);
             UpdateProductCommand = new ActionBase(UpdateProduct);
             UpdateProductQuantityCommand = new ActionBase(UpdateQuantity);

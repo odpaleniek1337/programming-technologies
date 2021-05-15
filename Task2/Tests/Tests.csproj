@@ -51,12 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTest\TestDataAPI.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataTest\TestDatabase.cs" />
-    <Compile Include="ServiceTest\TestProductService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTest\TestBuyerService.cs" />
-    <Compile Include="ServiceTest\TestOrderService.cs" />
     <Compile Include="ServiceTest\TestEventService.cs" />
+    <Compile Include="ServiceTest\TestOrderService.cs" />
+    <Compile Include="ServiceTest\TestProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -80,8 +80,5 @@
       <Project>{c639fecc-26c4-443a-b3c4-0601f450a8b9}</Project>
       <Name>Service</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PresentationTest\" />
   </ItemGroup>
 </Project>

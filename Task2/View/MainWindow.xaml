@@ -12,17 +12,26 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ListBox ItemsSource ="{Binding Buyers}" SelectedItem="{Binding CurrentBuyer}" Grid.Column="0" Grid.Row="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding Phone}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
         <Grid Grid.Column="1" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -34,20 +43,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition Height="104"/>
                 </Grid.RowDefinitions>
                 <TextBox Text="ID" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
                 <TextBox Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
                 <TextBox Text="Surname" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0"/>
                 <TextBox Text="Phone" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0"/>
-                <TextBox Text="{Binding CurrentBuyer.ID}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
-                <TextBox Text="{Binding CurrentBuyer.Name}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
-                <TextBox Text="{Binding CurrentBuyer.Surname}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"/>
-                <TextBox Text="{Binding CurrentBuyer.Phone}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1"/>
-                <TextBox Text="{Binding ID}" Grid.Column="0" Grid.Row="2"/>
-                <TextBox Text="{Binding Name}"  Grid.Column="1" Grid.Row="2"/>
-                <TextBox Text="{Binding Surname}"  Grid.Column="2" Grid.Row="2"/>
-                <TextBox Text="{Binding Phone}" Grid.Column="3" Grid.Row="2"/>
+                <TextBox Text="{Binding CurrentBuyer.ID}" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+                <TextBox Text="{Binding CurrentBuyer.Name}" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                <TextBox Text="{Binding CurrentBuyer.Surname}" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+                <TextBox Text="{Binding CurrentBuyer.Phone}" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -55,9 +59,26 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Text="{Binding Name}"  Grid.Column="0" />
+                <TextBox Text="{Binding Surname}"  Grid.Column="1" />
+                <TextBox Text="{Binding Phone}" Grid.Column="2" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
                 <Button Content="Add Buyer" Command="{Binding AddBuyerCommand}" Grid.Column="0"/>
                 <Button Content="Update Buyer" Command="{Binding UpdateBuyerCommand}" Grid.Column="1"/>
                 <Button Content="Delete Buyer" Command="{Binding DeleteBuyerCommand}" Grid.Column="2"/>
+                <Button Content="Refresh Buyers" Command="{Binding RefreshBuyersCommand}" Grid.Column="3"/>
+                <Button Content="Open Products View" Command="{Binding ShowProductsCommand}" Grid.Column="4"/>
             </Grid>
         </Grid>
     </Grid>

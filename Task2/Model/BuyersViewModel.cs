@@ -2,8 +2,8 @@
 using Service;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Data;
+using Data.API;
 
 namespace Model
 {
@@ -16,10 +16,14 @@ namespace Model
         }
         public BuyersViewModel()
         {
+            service = new BuyerService();
             AddBuyerCommand = new ActionBase(AddBuyer);
             UpdateBuyerCommand = new ActionBase(UpdateBuyer);
             DeleteBuyerCommand = new ActionBase(DeleteBuyer);
+            RefreshBuyersCommand = new ActionBase(RefreshBuyers);
+            ShowProductsCommand = new ActionBase(ShowProductsWindow);
         }
+
         private string name;
         public string Name
         {
@@ -79,6 +83,8 @@ namespace Model
         public ActionBase AddBuyerCommand { get; private set; }
         public ActionBase UpdateBuyerCommand { get; private set; }
         public ActionBase DeleteBuyerCommand { get; private set; }
+        public ActionBase RefreshBuyersCommand { get; private set; }
+        public ActionBase ShowProductsCommand { get; private set; }
 
         private void AddBuyer()
         {
@@ -94,8 +100,8 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
-        private Buyers currentBuyer;
-        public Buyers CurrentBuyer
+        private IBuyer currentBuyer;
+        public IBuyer CurrentBuyer
         {
             get => currentBuyer;
             set
@@ -131,8 +137,13 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
-        private IEnumerable<Buyers> buyers;
-        public IEnumerable<Buyers> Buyers
+        private void RefreshBuyers()
+        {
+            Buyers = service.GetBuyers();
+        }
+
+        private IEnumerable<IBuyer> buyers;
+        public IEnumerable<IBuyer> Buyers
         {
             get
             {
@@ -158,7 +169,15 @@ namespace Model
                 OnPropertyChanged("Text");
             }
         }
+
+        public Lazy<IWindow> ChildWindow { get; set; }
+
+        private void ShowProductsWindow()
+        {
+            IWindow window = ChildWindow.Value;
+            window.Show();
+        }
+
         public Action<string> MessageBoxShowDelegate { get; set; } = x => throw new ArgumentOutOfRangeException($"The delegate {nameof(MessageBoxShowDelegate)} must be assigned by the view layer");
     }
-
 }

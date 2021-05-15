@@ -13,26 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
-using Model.ViewModel;
 
 namespace View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy ProductWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IWindow
+    public partial class ProductWindow : Window, IWindow
     {
-        public MainWindow()
+        public ProductWindow()
         {
             InitializeComponent();
         }
+
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
-            BuyersViewModel buyersViewModel = (BuyersViewModel)DataContext;
-            buyersViewModel.ChildWindow = new Lazy<IWindow>(() => new ProductWindow());
-            buyersViewModel.MessageBoxShowDelegate = text => MessageBox.Show(text, "Hey", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            ProductViewModel productViewModel = (ProductViewModel)DataContext;
+            productViewModel.MessageBoxShowDelegate = text => MessageBox.Show(text, "Hey", MessageBoxButton.OK, MessageBoxImage.Information);
+        
         }
     }
 }
