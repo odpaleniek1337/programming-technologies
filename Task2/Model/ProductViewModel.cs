@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Service;
+using Data.API;
 using Model.ViewModel;
 
 namespace Model
@@ -15,13 +16,14 @@ namespace Model
         {
             this.service = service;
         }
-        ProductViewModel()
+        public ProductViewModel()
         {
             service = new ProductService();
             AddProductCommand = new ActionBase(AddProduct);
             UpdateProductCommand = new ActionBase(UpdateProduct);
             UpdateProductQuantityCommand = new ActionBase(UpdateQuantity);
             DeleteProductCommand = new ActionBase(DeleteProduct);
+            RefreshProductsCommand = new ActionBase(RefreshProducts);
         }
         private string name;
         public string Name
@@ -139,6 +141,7 @@ namespace Model
         public ActionBase UpdateProductCommand { get; private set; }
         public ActionBase UpdateProductQuantityCommand { get; private set; }
         public ActionBase DeleteProductCommand { get; private set; }
+        public ActionBase RefreshProductsCommand { get; private set; }
 
         private void AddProduct()
         {
@@ -154,6 +157,16 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
+        private IProduct currentProduct;
+        public IProduct CurrentProduct
+        {
+            get => currentProduct;
+            set
+            {
+                currentProduct = value;
+                OnPropertyChanged("CurrentProduct");
+            }
+        }
         private void UpdateProduct()
         {
             bool updated = service.UpdateProduct(ID, Name, Model, Price, Size, Producer, Season, Quantity);
@@ -195,6 +208,26 @@ namespace Model
             }
             MessageBoxShowDelegate(Text);
         }
+
+        private void RefreshProducts()
+        {
+            Products = service.GetProducts();
+        }
+
+        private IEnumerable<IProduct> products;
+        public IEnumerable<IProduct> Products
+        {
+            get
+            {
+                return products;
+            }
+            set
+            {
+                products = value;
+                OnPropertyChanged("Products");
+            }
+        }
+
         private string text;
         public string Text
         {

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using System.ComponentModel;
 
 namespace View
 {
@@ -32,6 +33,11 @@ namespace View
             ProductViewModel productViewModel = (ProductViewModel)DataContext;
             productViewModel.MessageBoxShowDelegate = text => MessageBox.Show(text, "Hey", MessageBoxButton.OK, MessageBoxImage.Information);
         
+        }
+        protected override void OnClosing(CancelEventArgs e)    //makes window be reusable
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }
