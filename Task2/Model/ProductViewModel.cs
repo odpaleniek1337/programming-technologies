@@ -10,6 +10,11 @@ namespace Model
 {
     class ProductViewModel : ViewModelBase
     {
+        private ProductService service;
+        public ProductViewModel(ProductService service)
+        {
+            this.service = service;
+        }
         ProductViewModel()
         {
             AddProductCommand = new ActionBase(AddProduct);
@@ -136,7 +141,7 @@ namespace Model
 
         private void AddProduct()
         {
-            bool added = ProductService.AddProduct(Name, Model, Price, Size, Producer, Season, Quantity);
+            bool added = service.AddProduct(Name, Model, Price, Size, Producer, Season, Quantity);
             if (added)
             {
                 text = "Product added";
@@ -150,7 +155,7 @@ namespace Model
 
         private void UpdateProduct()
         {
-            bool updated = ProductService.UpdateProduct(ID, Name, Model, Price, Size, Producer, Season, Quantity);
+            bool updated = service.UpdateProduct(ID, Name, Model, Price, Size, Producer, Season, Quantity);
             if (updated)
             {
                 text = "Product updated";
@@ -164,7 +169,7 @@ namespace Model
 
         private void UpdateQuantity()
         {
-            bool updated = ProductService.UpdateProductQuantity(ID, Quantity);
+            bool updated = service.UpdateProductQuantity(ID, Quantity);
             if (updated)
             {
                 text = "Product quantity updated";
@@ -178,7 +183,7 @@ namespace Model
 
         private void DeleteProduct()
         {
-            bool deleted = ProductService.DeleteProduct(ID);
+            bool deleted = service.DeleteProduct(ID);
             if (deleted)
             {
                 text = "Product deleted";

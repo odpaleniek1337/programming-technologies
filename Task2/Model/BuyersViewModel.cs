@@ -9,6 +9,11 @@ namespace Model
 {
     public class BuyersViewModel : ViewModelBase
     {
+        private BuyerService service;
+        public BuyersViewModel(BuyerService service)
+        {
+            this.service = service;
+        }
         public BuyersViewModel()
         {
             AddBuyerCommand = new ActionBase(AddBuyer);
@@ -77,7 +82,7 @@ namespace Model
 
         private void AddBuyer()
         {
-            bool added = BuyerService.AddBuyer(Name, Surname, Phone);
+            bool added = service.AddBuyer(Name, Surname, Phone);
             if (added)
             {
                 text = "Buyer added";
@@ -101,7 +106,7 @@ namespace Model
         }
         private void UpdateBuyer()
         {
-            bool updated = BuyerService.UpdateBuyer(ID, Name, Surname, Phone);
+            bool updated = service.UpdateBuyer(ID, Name, Surname, Phone);
             if (updated)
             {
                 text = "Buyer updated";
@@ -114,7 +119,7 @@ namespace Model
         }
         private void DeleteBuyer()
         {
-            bool deleted = BuyerService.DeleteBuyer(Phone);
+            bool deleted = service.DeleteBuyer(Phone);
             if (deleted)
             {
                 text = "Buyer deleted";

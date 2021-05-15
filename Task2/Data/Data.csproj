@@ -59,6 +59,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Buyer.cs" />
+    <Compile Include="API\Event.cs" />
+    <Compile Include="API\IBuyer.cs" />
+    <Compile Include="API\IEvent.cs" />
+    <Compile Include="API\IOrder.cs" />
+    <Compile Include="API\IProduct.cs" />
+    <Compile Include="API\IRepository.cs" />
+    <Compile Include="API\Order.cs" />
+    <Compile Include="API\Product.cs" />
+    <Compile Include="API\Repository.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -87,6 +97,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,5 +111,6 @@
       <DependentUpon>Shop.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
