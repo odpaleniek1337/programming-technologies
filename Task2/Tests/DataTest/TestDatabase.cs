@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using Data;
 
-namespace Tests
+namespace Tests.DataTest
 {
     [TestClass]
-    public class TestData
+    public class TestDatabase
     {
         [TestMethod]
         public void AddProductToDatabase()
