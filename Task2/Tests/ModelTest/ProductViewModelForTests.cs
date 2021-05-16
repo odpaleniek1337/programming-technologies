@@ -1,30 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model.ViewModel;
 using Service;
+using System;
+using System.Collections.Generic;
+using Data;
 using Data.API;
-using Model.ViewModel;
+using Model;
 
-namespace Model
+namespace Tests.ModelTest
 {
-    public class ProductViewModel : ViewModelBase, IProductViewModel
+    public class ProductViewModelForTests : IProductViewModel
     {
         private ProductService service;
-        public ProductViewModel(ProductService service)
+        public ProductViewModelForTests(ProductService service)
         {
             this.service = service;
         }
-        public ProductViewModel()
-        {
-            service = new ProductService();
-            AddProductCommand = new ActionBase(AddProduct);
-            UpdateProductCommand = new ActionBase(UpdateProduct);
-            UpdateProductQuantityCommand = new ActionBase(UpdateQuantity);
-            DeleteProductCommand = new ActionBase(DeleteProduct);
-            RefreshProductsCommand = new ActionBase(RefreshProducts);
-        }
+
         private string name;
         public string Name
         {
@@ -35,7 +26,7 @@ namespace Model
             set
             {
                 name = value;
-                OnPropertyChanged("Name");
+                    
             }
         }
 
@@ -49,7 +40,7 @@ namespace Model
             set
             {
                 model = value;
-                OnPropertyChanged("Model");
+                   
             }
         }
 
@@ -63,7 +54,7 @@ namespace Model
             set
             {
                 price = value;
-                OnPropertyChanged("Price");
+                    
             }
         }
 
@@ -77,7 +68,6 @@ namespace Model
             set
             {
                 size = value;
-                OnPropertyChanged("Size");
             }
         }
 
@@ -91,7 +81,6 @@ namespace Model
             set
             {
                 producer = value;
-                OnPropertyChanged("Producer");
             }
         }
 
@@ -105,7 +94,6 @@ namespace Model
             set
             {
                 season = value;
-                OnPropertyChanged("Season");
             }
         }
 
@@ -119,7 +107,6 @@ namespace Model
             set
             {
                 quantity = value;
-                OnPropertyChanged("Quantity");
             }
         }
 
@@ -133,15 +120,8 @@ namespace Model
             set
             {
                 id = value;
-                OnPropertyChanged("ID");
             }
         }
-
-        public ActionBase AddProductCommand { get; private set; }
-        public ActionBase UpdateProductCommand { get; private set; }
-        public ActionBase UpdateProductQuantityCommand { get; private set; }
-        public ActionBase DeleteProductCommand { get; private set; }
-        public ActionBase RefreshProductsCommand { get; private set; }
 
         public void AddProduct()
         {
@@ -154,7 +134,7 @@ namespace Model
             {
                 text = "Cannot add Product";
             }
-            MessageBoxShowDelegate(Text);
+                
         }
 
         private IProduct currentProduct;
@@ -164,7 +144,7 @@ namespace Model
             set
             {
                 currentProduct = value;
-                OnPropertyChanged("CurrentProduct");
+                   
             }
         }
         public void UpdateProduct()
@@ -178,7 +158,7 @@ namespace Model
             {
                 text = "Cannot update Product";
             }
-            MessageBoxShowDelegate(Text);
+               
         }
 
         public void UpdateQuantity()
@@ -192,7 +172,7 @@ namespace Model
             {
                 text = "Cannot update Product quantity";
             }
-            MessageBoxShowDelegate(Text);
+                
         }
 
         public void DeleteProduct()
@@ -206,7 +186,7 @@ namespace Model
             {
                 text = "Cannot delete Product";
             }
-            MessageBoxShowDelegate(Text);
+                
         }
 
         public void RefreshProducts()
@@ -224,7 +204,7 @@ namespace Model
             set
             {
                 products = value;
-                OnPropertyChanged("Products");
+                    
             }
         }
 
@@ -238,10 +218,8 @@ namespace Model
             set
             {
                 text = value;
-                OnPropertyChanged("Text");
+                    
             }
         }
-
-        public Action<string> MessageBoxShowDelegate { get; set; } = x => throw new ArgumentOutOfRangeException($"The delegate {nameof(MessageBoxShowDelegate)} must be assigned by the view layer");
     }
 }

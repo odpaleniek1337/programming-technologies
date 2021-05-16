@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="DataTest\TestDataAPI.cs" />
     <Compile Include="DataTest\TestDatabase.cs" />
+    <Compile Include="ModelTest\BuyerViewModelForTests.cs" />
+    <Compile Include="ModelTest\ProductViewModelForTests.cs" />
     <Compile Include="ModelTest\TestBuyerModelDatabase.cs" />
     <Compile Include="ModelTest\TestProductModelDatabase.cs" />
     <Compile Include="ModelTest\FixedRepository.cs" />

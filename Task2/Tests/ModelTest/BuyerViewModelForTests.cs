@@ -7,21 +7,12 @@ using Data.API;
 
 namespace Model
 {
-    public class BuyersViewModel : ViewModelBase, IBuyerViewModel
+    public class BuyersViewModelForTests : ViewModelBase, IBuyerViewModel
     {
         private BuyerService service;
-        public BuyersViewModel(BuyerService service)
+        public BuyersViewModelForTests(BuyerService service)
         {
             this.service = service;
-        }
-        public BuyersViewModel()
-        {
-            service = new BuyerService();
-            AddBuyerCommand = new ActionBase(AddBuyer);
-            UpdateBuyerCommand = new ActionBase(UpdateBuyer);
-            DeleteBuyerCommand = new ActionBase(DeleteBuyer);
-            RefreshBuyersCommand = new ActionBase(RefreshBuyers);
-            ShowProductsCommand = new ActionBase(ShowProductsWindow);
         }
 
         private string name;
@@ -97,7 +88,6 @@ namespace Model
             {
                 text = "Cannot add Buyer";
             }
-            MessageBoxShowDelegate(Text);
         }
 
         private IBuyer currentBuyer;
@@ -121,7 +111,6 @@ namespace Model
             {
                 text = "Cannot update Buyer";
             }
-            MessageBoxShowDelegate(Text);
         }
         public void DeleteBuyer()
         {
@@ -134,7 +123,6 @@ namespace Model
             {
                 text = "Cannot delete Buyer";
             }
-            MessageBoxShowDelegate(Text);
         }
 
         public void RefreshBuyers()
@@ -169,15 +157,5 @@ namespace Model
                 OnPropertyChanged("Text");
             }
         }
-
-        public Lazy<IWindow> ChildWindow { get; set; }
-
-        private void ShowProductsWindow()
-        {
-            IWindow window = ChildWindow.Value;
-            window.Show();
-        }
-
-        public Action<string> MessageBoxShowDelegate { get; set; }
     }
 }

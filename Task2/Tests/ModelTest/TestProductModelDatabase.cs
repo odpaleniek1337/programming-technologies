@@ -4,6 +4,7 @@ using Data;
 using Data.API;
 using Model;
 using Service;
+using System.Linq;
 
 namespace Tests.ModelTest
 {
@@ -12,18 +13,29 @@ namespace Tests.ModelTest
     {
         public IRepository repository;
         public ProductService service;
-        public ProductViewModel model;
+        public ProductViewModelForTests model;
 
         [TestInitialize]
         public void Initialize()
         {
             repository = new Repository();
             service = new ProductService(repository);
-            model = new ProductViewModel(service);
+            model = new ProductViewModelForTests(service);
         }
         [TestMethod]
-        public void TestMethod1()
+        public void TestAddDeleteProduct()
         {
+            model.Name = "test";
+            model.Model = "testowy";
+            model.Producer = "111111111";
+            model.Size = 19;
+            model.Price = 100;
+            model.Quantity = 20;
+            model.Season = "summer";
+            model.AddProduct();
+            model.ID = service.GetProductByModel("testowy").ID;
+            model.DeleteProduct();
+            Assert.IsTrue(service.GetProducts().Count() == 0);
         }
     }
 }
