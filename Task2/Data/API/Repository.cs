@@ -82,7 +82,6 @@ namespace Data.API
                 {
                     Buyer.name = Name;
                     Buyer.surname = Surname;
-                    Buyer.phone = Phone;
                     context.SubmitChanges();
                     return true;
                 }

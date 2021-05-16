@@ -52,6 +52,11 @@
   <ItemGroup>
     <Compile Include="DataTest\TestDataAPI.cs" />
     <Compile Include="DataTest\TestDatabase.cs" />
+    <Compile Include="ModelTest\TestBuyerModelDatabase.cs" />
+    <Compile Include="ModelTest\TestProductModelDatabase.cs" />
+    <Compile Include="ModelTest\FixedRepository.cs" />
+    <Compile Include="ModelTest\TestBuyerModelFixed.cs" />
+    <Compile Include="ModelTest\TestProductModelFixed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTest\TestBuyerService.cs" />
     <Compile Include="ServiceTest\TestEventService.cs" />
@@ -79,6 +84,10 @@
     <ProjectReference Include="..\Logic\Service.csproj">
       <Project>{c639fecc-26c4-443a-b3c4-0601f450a8b9}</Project>
       <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{6d7697bd-5f12-4c75-9d6a-7009ed08843a}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

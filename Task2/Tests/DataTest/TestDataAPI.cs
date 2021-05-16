@@ -32,13 +32,13 @@ namespace Tests.DataTest
         public void UpdateBuyerTest()
         {
             Assert.IsTrue(repository.AddBuyer("Jan", "Kowalski", "696 969 696"));
-            Assert.IsTrue(repository.UpdateBuyer(repository.GetBuyer("696 969 696").ID, "Jan", "Kowalski", "696 969 697"));
+            Assert.IsTrue(repository.UpdateBuyer(repository.GetBuyer("696 969 696").ID, "Jann", "Kowalskii", "696 969 696"));
 
-            Assert.AreEqual(repository.GetBuyer("696 969 697").Name, "Jan");
-            Assert.AreEqual(repository.GetBuyer("696 969 697").Surname, "Kowalski");
-            Assert.AreEqual(repository.GetBuyer("696 969 697").Phone, "696 969 697");
+            Assert.AreEqual(repository.GetBuyer("696 969 696").Name, "Jann");
+            Assert.AreEqual(repository.GetBuyer("696 969 696").Surname, "Kowalskii");
+            Assert.AreEqual(repository.GetBuyer("696 969 696").Phone, "696 969 696");
 
-            Assert.IsTrue(repository.DeleteBuyer(repository.GetBuyer("696 969 697").Phone));
+            Assert.IsTrue(repository.DeleteBuyer(repository.GetBuyer("696 969 696").Phone));
         }
 
         [TestMethod]

@@ -36,13 +36,13 @@ namespace Tests.ServiceTest
         public void UpdateBuyerTest()
         {
             Assert.IsTrue(service.AddBuyer("Jan", "Kowalski", "696 969 696"));
-            Assert.IsTrue(service.UpdateBuyer(service.GetBuyer("696 969 696").ID, "Jan", "Kowalski", "696 969 697"));
+            Assert.IsTrue(service.UpdateBuyer(service.GetBuyer("696 969 696").ID, "Jan", "Kowalski", "696 969 696"));
 
-            Assert.AreEqual(service.GetBuyer("696 969 697").Name, "Jan");
-            Assert.AreEqual(service.GetBuyer("696 969 697").Surname, "Kowalski");
-            Assert.AreEqual(service.GetBuyer("696 969 697").Phone, "696 969 697");
+            Assert.AreEqual(service.GetBuyer("696 969 696").Name, "Jan");
+            Assert.AreEqual(service.GetBuyer("696 969 696").Surname, "Kowalski");
+            Assert.AreEqual(service.GetBuyer("696 969 696").Phone, "696 969 696");
 
-            Assert.IsTrue(service.DeleteBuyer(service.GetBuyer("696 969 697").Phone));
+            Assert.IsTrue(service.DeleteBuyer(service.GetBuyer("696 969 696").Phone));
         }
 
         [TestMethod]

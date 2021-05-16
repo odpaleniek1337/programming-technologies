@@ -86,7 +86,7 @@ namespace Model
         public ActionBase RefreshBuyersCommand { get; private set; }
         public ActionBase ShowProductsCommand { get; private set; }
 
-        private void AddBuyer()
+        public void AddBuyer()
         {
             bool added = service.AddBuyer(Name, Surname, Phone);
             if (added)
@@ -110,7 +110,7 @@ namespace Model
                 OnPropertyChanged("CurrentBuyer");
             }
         }
-        private void UpdateBuyer()
+        public void UpdateBuyer()
         {
             bool updated = service.UpdateBuyer(ID, Name, Surname, Phone);
             if (updated)
@@ -123,7 +123,7 @@ namespace Model
             }
             MessageBoxShowDelegate(Text);
         }
-        private void DeleteBuyer()
+        public void DeleteBuyer()
         {
             bool deleted = service.DeleteBuyer(Phone);
             if (deleted)
@@ -137,7 +137,7 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
-        private void RefreshBuyers()
+        public void RefreshBuyers()
         {
             Buyers = service.GetBuyers();
         }
@@ -178,6 +178,6 @@ namespace Model
             window.Show();
         }
 
-        public Action<string> MessageBoxShowDelegate { get; set; } = x => throw new ArgumentOutOfRangeException($"The delegate {nameof(MessageBoxShowDelegate)} must be assigned by the view layer");
+        public Action<string> MessageBoxShowDelegate { get; set; }
     }
 }
