@@ -26,13 +26,13 @@ namespace Data.API
         }
         public IEnumerable<IBuyer> GetBuyers()
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
+                var buyers = (from _buyer in context.Buyers select _buyer);
                 List<IBuyer> list = new List<IBuyer>();
-                context.Buyers.ToList();
-                foreach (Buyers Buyer in context.Buyers.ToList())
+                foreach (Buyers buyer in buyers)
                 {
-                    list.Add(Transform(Buyer));
+                    list.Add(Transform(buyer));
                 }
                 return list;
             }
@@ -40,22 +40,20 @@ namespace Data.API
 
         public IBuyer GetBuyer(string Phone)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
-                foreach (Buyers Buyer in context.Buyers.ToList())
+                Buyers buyer = (from _buyer in context.Buyers where (_buyer.phone == Phone) select _buyer).FirstOrDefault();
+                if (buyer != null)
                 {
-                    if (Buyer.phone.Equals(Phone))
-                    {
-                        return Transform(Buyer);
-                    }
+                    return Transform(buyer);
                 }
-                return null;
+                else return null;
             }
         }
 
         public bool AddBuyer(string Name, string Surname, string Phone)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 if (GetBuyer(Phone) == null && !Name.Equals(null) && !Surname.Equals(null) && !Phone.Equals(null))
                 {
@@ -75,7 +73,7 @@ namespace Data.API
 
         public bool UpdateBuyer(int id, string Name, string Surname, string Phone)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Buyers Buyer = context.Buyers.SingleOrDefault(i => i.phone == Phone);
                 if (GetBuyer(Phone) != null && !Name.Equals(null) && !Surname.Equals(null) && !Phone.Equals(null))
@@ -91,7 +89,7 @@ namespace Data.API
 
         public bool DeleteBuyer(string Phone)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Buyers Buyer = context.Buyers.SingleOrDefault(i => i.phone == Phone);
                 if (GetBuyer(Phone) != null && !Phone.Equals(null))
@@ -105,11 +103,11 @@ namespace Data.API
         }
         public IEnumerable<IProduct> GetProducts()
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 List<IProduct> list = new List<IProduct>();
-                context.Products.ToList();
-                foreach (Products Product in context.Products.ToList())
+                var products = (from _product in context.Products select _product);
+                foreach (Products Product in products)
                 {
                     list.Add(Transform(Product));
                 }
@@ -119,31 +117,26 @@ namespace Data.API
 
         public IProduct GetProductById(int id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
-                foreach (Products Product in context.Products.ToList())
+                Products product = (from _product in context.Products where (_product.id == id) select _product).FirstOrDefault();
+                if (product != null)
                 {
-                    if (Product.id.Equals(id))
-                    {
-                        return Transform(Product);
-                    }
+                    return Transform(product);
                 }
-                return null;
+                else return null;
             }
         }
 
         public IEnumerable<IProduct> GetProductByName(string name)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 List<IProduct> list = new List<IProduct>();
-                context.Products.ToList();
-                foreach (Products Product in context.Products.ToList())
+                var products = (from _product in context.Products where (_product.name == name) select _product);
+                foreach (Products Product in products)
                 {
-                    if (Product.name.Equals(name))
-                    {
-                        list.Add(Transform(Product));
-                    }
+                    list.Add(Transform(Product));
                 }
                 return list;
             }
@@ -151,21 +144,19 @@ namespace Data.API
 
         public IProduct GetProductByModel(string model)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
-                foreach (Products Product in context.Products.ToList())
+                Products product = (from _product in context.Products where (_product.model == model) select _product).FirstOrDefault();
+                if (product != null)
                 {
-                    if (Product.model.Equals(model))
-                    {
-                        return Transform(Product);
-                    }
+                    return Transform(product);
                 }
-                return null;
+                else return null;
             }
         }
         public bool AddProduct(string name, string model, float price, int size, string producer, string season, int quantity)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 if (GetProductByModel(model) == null && !name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
                 {
@@ -189,7 +180,7 @@ namespace Data.API
 
         public bool UpdateProduct(int id, string name, string model, float price, int size, string producer, string season, int quantity)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Products Product = context.Products.SingleOrDefault(i => i.id == id);
                 if (!name.Equals(null) && !model.Equals(null) && !price.Equals(null) && !size.Equals(null) && !producer.Equals(null) && !season.Equals(null) && !quantity.Equals(null))
@@ -210,7 +201,7 @@ namespace Data.API
 
         public bool UpdateProductQuantity(int id, int quantity)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Products Product = context.Products.SingleOrDefault(i => i.id == id);
                 if (!quantity.Equals(null))
@@ -225,7 +216,7 @@ namespace Data.API
 
         public bool DeleteProduct(int id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Products Product = context.Products.SingleOrDefault(i => i.id == id);
                 if (GetProductById(id) != null && !id.Equals(null))
@@ -240,11 +231,11 @@ namespace Data.API
 
         public IEnumerable<IOrder> GetOrders()
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 List<IOrder> list = new List<IOrder>();
-                context.Orders.ToList();
-                foreach (Orders Order in context.Orders.ToList())
+                var orders = (from _order in context.Orders select _order);
+                foreach (Orders Order in orders)
                 {
                     list.Add(Transform(Order));
                 }
@@ -254,24 +245,21 @@ namespace Data.API
 
         public IOrder GetOrderById(int id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
-                foreach (Orders Order in context.Orders.ToList())
+                Orders order = (from _order in context.Orders where (_order.id == id) select _order).FirstOrDefault();
+                if (order != null)
                 {
-                    if (Order.id.Equals(id))
-                    {
-                        return Transform(Order);
-                    }
+                    return Transform(order);
                 }
-                return null;
+                else return null;
             }
         }
 
         public IOrder GetLatestOrderByProductAndBuyer(int product_id, int buyer_id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
-
                 foreach (Orders Order in context.Orders.ToList().OrderByDescending(p => p.id))
                 {
                     if (Order.product_id.Equals(product_id) && Order.buyer_id.Equals(buyer_id))
@@ -285,23 +273,25 @@ namespace Data.API
 
         public IEnumerable<IOrder> GetOrdersByProductId(int product_id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 List<IOrder> result = new List<IOrder>();
-                foreach (Orders Order in context.Orders.ToList())
+                var orders = (from _order in context.Orders where (_order.product_id == product_id) select _order);
+                if (orders != null)
                 {
-                    if (Order.product_id.Equals(product_id))
+                    foreach (Orders Order in orders)
                     {
                         result.Add(Transform(Order));
                     }
+                    return result;
                 }
-                return result;
+                else return null;
             }
         }
 
         public bool AddOrder(int product_id, int buyer_id, bool is_payed, string event_description)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 if (!product_id.Equals(null) && !buyer_id.Equals(null) && !is_payed.Equals(null))
                 {
@@ -325,7 +315,7 @@ namespace Data.API
 
         public bool UpdateOrder(int id, int buyer_id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Orders Order = context.Orders.SingleOrDefault(i => i.id == id);
                 if (!buyer_id.Equals(null))
@@ -340,7 +330,7 @@ namespace Data.API
 
         public bool DeleteOrder(int id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Orders Order = context.Orders.SingleOrDefault(i => i.id == id);
                 if (GetOrderById(id) != null && !id.Equals(null))
@@ -360,7 +350,7 @@ namespace Data.API
 
         public IEnumerable<IEvent> GetEvents()
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 List<IEvent> list = new List<IEvent>();
                 context.Events.ToList();
@@ -374,7 +364,7 @@ namespace Data.API
 
         public IEvent GetEventById(int id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 foreach (Events Event in context.Events.ToList())
                 {
@@ -389,7 +379,7 @@ namespace Data.API
 
         public IEnumerable<IEvent> GetEventsByOrderId(int order_id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 List<IEvent> list = new List<IEvent>();
                 foreach (Events Event in context.Events.ToList())
@@ -405,7 +395,7 @@ namespace Data.API
 
         public bool AddEvent(DateTime date, int order_id, string type, string description)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 if (!date.Equals(null) && !order_id.Equals(null) && !type.Equals(null) && !description.Equals(null))
                 {
@@ -481,7 +471,7 @@ namespace Data.API
 
         public bool UpdateEvent(int id, string description)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Events Event = context.Events.SingleOrDefault(i => i.id == id);
                 if (!description.Equals(null))
@@ -496,7 +486,7 @@ namespace Data.API
 
         public bool DeleteEvent(int id)
         {
-            using (var context = new ShopDataContext())
+            using (ShopDataContext context = new ShopDataContext())
             {
                 Events Event = context.Events.SingleOrDefault(i => i.id == id);
                 if (GetEventById(id) != null && !id.Equals(null))
