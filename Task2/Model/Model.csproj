@@ -41,14 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBuyerViewModel.cs" />
-    <Compile Include="IProductViewModel.cs" />
-    <Compile Include="IWindow.cs" />
-    <Compile Include="ProductViewModel.cs" />
+    <Compile Include="Model\CurrentBuyer.cs" />
+    <Compile Include="Model\CurrentProduct.cs" />
+    <Compile Include="ViewModel\IBuyerViewModel.cs" />
+    <Compile Include="ViewModel\IProductViewModel.cs" />
+    <Compile Include="ViewModel\IWindow.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Base\ActionBase.cs" />
     <Compile Include="ViewModel\Base\ViewModelBase.cs" />
-    <Compile Include="BuyersViewModel.cs" />
+    <Compile Include="ViewModel\BuyersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
@@ -60,5 +62,6 @@
       <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

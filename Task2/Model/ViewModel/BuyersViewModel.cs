@@ -1,11 +1,10 @@
-﻿using Model.ViewModel;
-using Service;
+﻿using Service;
 using System;
 using System.Collections.Generic;
-using Data;
 using Data.API;
+using Model.Model;
 
-namespace Model
+namespace Model.ViewModel
 {
     public class BuyersViewModel : ViewModelBase, IBuyerViewModel
     {
@@ -100,7 +99,7 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
-        private IBuyer currentBuyer;
+        private IBuyer currentBuyer = new CurrentBuyer();
         public IBuyer CurrentBuyer
         {
             get => currentBuyer;

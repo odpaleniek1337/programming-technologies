@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Service;
 using Data.API;
-using Model.ViewModel;
+using Model.Model;
 
-namespace Model
+namespace Model.ViewModel
 {
     public class ProductViewModel : ViewModelBase, IProductViewModel
     {
@@ -157,7 +157,7 @@ namespace Model
             MessageBoxShowDelegate(Text);
         }
 
-        private IProduct currentProduct;
+        private IProduct currentProduct = new CurrentProduct();
         public IProduct CurrentProduct
         {
             get => currentProduct;
